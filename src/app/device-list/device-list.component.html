@@ -1,0 +1,32 @@
+<!-- <p>
+  device-list works!(to be deleted）
+</p> -->
+<div class="row">
+        <div class="col-xs-12">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>OS</th>
+                        <th>Version</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let device of devices">
+                        <td>{{device.name}}</td>
+                        <td>{{device.os}}</td>
+                        <td>{{device.osVersion}}</td>
+                        <td>{{device.currentStatus}}</td>
+                        <td>
+                          <!-- <h4><a [routerLink]="['./device',device.id]">{{device.id}}</a></h4> -->
+                          <button class="btn btn-primary"
+                            [routerLink]="['./device',device.id]"  >Details</button>
+                            <!-- <button class="btn btn-primary"
+                                (click)="removeRecordPlugin(user)">Details</button> -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
