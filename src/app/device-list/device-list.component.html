@@ -1,32 +1,47 @@
 <!-- <p>
   device-list works!(to be deleted）
 </p> -->
-<div class="row">
-        <div class="col-xs-12">
-            <table class="table table-condensed">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>OS</th>
-                        <th>Version</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let device of devices">
-                        <td>{{device.name}}</td>
-                        <td>{{device.os}}</td>
-                        <td>{{device.osVersion}}</td>
-                        <td>{{device.currentStatus}}</td>
-                        <td>
-                          <!-- <h4><a [routerLink]="['./device',device.id]">{{device.id}}</a></h4> -->
-                          <button class="btn btn-primary"
-                            [routerLink]="['./device',device.id]"  >Details</button>
-                            <!-- <button class="btn btn-primary"
-                                (click)="removeRecordPlugin(user)">Details</button> -->
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+
+
+<div class="container">
+  <button [routerLink]="['./deviceadd']" class="btn btn-success">Add a new device</button>
+  <!-- <button style="margin: 0 20px" class="btn btn-danger pull-right" (click)="onSave()">Save All Devices</button> -->
+  <!-- <button class="btn btn-warning pull-right" (click)="onGet()">Get Devices</button> -->
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>ID</th>
+            <th>OS</th>
+            <th>Version</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let device of devices">
+            <td> <a [routerLink]="['./devicedetail',device.id]">{{device.name}}</a> </td>
+            <td>{{device.id}}</td>
+            <td>{{device.os}}</td>
+            <td>{{device.osVersion}}</td>
+            <td>{{device.currentStatus}}</td>
+            <td>
+              <!-- <h4><a [routerLink]="['./device',device.id]">{{device.id}}</a></h4> -->
+              <!-- <button class="btn btn-info"[routerLink]="['./devicedetail',device.id]">Details</button> -->
+              <button class="btn btn-warning " [routerLink]="['./deviceedit',device.id]">Edit</button>
+              <button class="btn btn-danger pull-right">Delete</button>
+
+
+
+              <!-- <button class="btn btn-primary"
+                                  (click)="removeRecordPlugin(user)">Details</button> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+
+</div>

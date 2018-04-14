@@ -1,0 +1,51 @@
+<p>
+To be deleted!   device-add works!
+</p>
+
+<div class="container">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <form #myform="ngForm" >
+
+      <div class="form-group">
+        <label>Device Name</label>
+        <input #devicename="ngModel" ngModel name="devicename" type="text" class="form-control" placeholder="Huawei P20-1">
+      </div>
+
+      <div class="form-group">
+        <label>Operating System</label>
+        <input type="text"  #os="ngModel" ngModel name="os" class="form-control" placeholder="Android" >
+      </div>
+      <div class="form-group">
+        <label>OS Version</label>
+        <input type="text"  #os="ngModel" ngModel name="osVersion" class="form-control" placeholder="7.0" >
+      </div>
+      <button class="btn btn-primary" (click)="onAddBtnClicked(myform.value)">Add a new device</button>
+
+
+      <!-- <button type="submit" class="btn btn-primary">Add a new device</button> -->
+    </form>
+    <div>
+      {{myform.value | json}}
+    </div>
+
+    <div>{{devicename.value}}</div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<!--
+<form  #myform="ngForm" (ngSubmit)="onSubmit(myform.value)" >
+
+  <div ngModelGroup = "userInfo">
+    <div>Username: <input #username="ngModel" ngModel name="username" type="text" required></div>
+    <div>Moile: <input #mobile="ngModel" ngModel name="mobile" type="text"></div>
+  </div>
+
+  <div>Password: <input #pwd="ngModel" ngModel name="password" type="text"></div>
+  <button type="submit">Add a new device</button>
+</form> -->

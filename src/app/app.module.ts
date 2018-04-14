@@ -23,6 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DeviceListComponent } from './device-list/device-list.component';
 import { DeviceDetailComponent } from './device-detail/device-detail.component';
 import { DataService } from './providers/data.service';
+import { DeviceAddComponent } from './device-add/device-add.component';
+import { DeviceEditComponent } from './device-edit/device-edit.component';
 
 const routeConfig: Routes=[
   {path:'', redirectTo:'/login', pathMatch:'full'},
@@ -30,7 +32,10 @@ const routeConfig: Routes=[
   {path: 'home', component:HomePageComponent,
     children:[
       {path:'',component:DeviceListComponent},
-      {path:'device/:id', component:DeviceDetailComponent}
+      {path:'devicedetail/:id', component:DeviceDetailComponent},
+      {path:'deviceedit/:id', component:DeviceEditComponent},
+
+      {path:'deviceadd', component:DeviceAddComponent}
     ]
   },
   {path: 'signup', component: SignupComponent}
@@ -56,7 +61,9 @@ const routeConfig: Routes=[
     HomePageComponent,
     DeviceListComponent,
     DeviceDetailComponent,
-    SignupComponent
+    SignupComponent,
+    DeviceAddComponent,
+    DeviceEditComponent
   ],
   imports: [
     BrowserModule,
