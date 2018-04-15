@@ -1,31 +1,38 @@
-<p>
+<!-- <p>
 To be deleted!  device-edit works!
-</p>
+</p> -->
 <div class="container">
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    <form #myform="ngForm" >
+    <form #myform="ngForm">
 
-      <div class="form-group">
-        <label>Device Name</label>
-        <input #devicename="ngModel" [(ngModel)]="device.name" name="devicename" type="text" class="form-control" >
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Device Name</label>
+        <div class="col-sm-9">
+          <input #devicename="ngModel" [(ngModel)]="device.name" name="devicename" type="text" class="form-control">
+        </div>
       </div>
 
-      <div class="form-group">
-        <label>Operating System</label>
-        <input type="text"  #os="ngModel" [(ngModel)]="device.os" name="os" class="form-control"  >
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Operating System</label>
+        <div class="col-sm-9">
+
+          <input type="text" #os="ngModel" [(ngModel)]="device.os" name="os" class="form-control">
+        </div>
       </div>
-      <div class="form-group">
-        <label>OS Version</label>
-        <input type="text"  #os="ngModel" [(ngModel)]="device.osVersion" name="osVersion" class="form-control"  >
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">OS Version</label>
+        <div class="col-sm-9">
+
+          <input type="text" #os="ngModel" [(ngModel)]="device.osVersion" name="osVersion" class="form-control">
+        </div>
       </div>
-      <button class="btn btn-primary" (click)="onSaveBtnClicked(myform.value)">Save</button>
+
+      <button class="btn btn-primary pull-right" (click)="onSaveBtnClicked(myform.value)">Save changes</button>
 
     </form>
-    <div>
-      {{myform.value | json}}
-    </div>
 
-    <div>{{devicename.value}}</div>
 
   </div>
 </div>

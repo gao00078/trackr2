@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Device, DataService } from '../providers/data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-device-edit',
@@ -14,7 +14,8 @@ export class DeviceEditComponent implements OnInit {
 
   constructor(
     private routeInfo:ActivatedRoute,
-    private dataService:DataService
+    private dataService:DataService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -43,7 +44,10 @@ export class DeviceEditComponent implements OnInit {
 
     this.dataService.storeDevices(this.devices)
       .subscribe(
-        (response) => console.log(response),
+        (response) => {console.log(response);
+          this.router.navigate(['/home']);
+
+        },
         (error)=> console.log(error)
       )
 

@@ -1,34 +1,42 @@
-<p>
+<!-- <p>
 To be deleted!   device-add works!
-</p>
+</p> -->
 
 <div class="container">
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    <form #myform="ngForm" >
+    <form #myform="ngForm">
 
-      <div class="form-group">
-        <label>Device Name</label>
-        <input #devicename="ngModel" ngModel name="devicename" type="text" class="form-control" placeholder="Huawei P20-1">
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Device Name</label>
+        <div class="col-sm-9">
+          <input #devicename="ngModel" ngModel name="devicename" type="text" class="form-control" placeholder="Huawei P20-1">
+        </div>
       </div>
 
-      <div class="form-group">
-        <label>Operating System</label>
-        <input type="text"  #os="ngModel" ngModel name="os" class="form-control" placeholder="Android" >
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Operating System</label>
+        <div class="col-sm-9">
+        <input type="text" #os="ngModel" ngModel name="os" class="form-control" placeholder="Android">
       </div>
-      <div class="form-group">
-        <label>OS Version</label>
-        <input type="text"  #os="ngModel" ngModel name="osVersion" class="form-control" placeholder="7.0" >
+    </div>
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">OS Version</label>
+        <div class="col-sm-9">
+          <input type="text" #os="ngModel" ngModel name="osVersion" class="form-control" placeholder="7.0">
+        </div>
+
       </div>
-      <button class="btn btn-primary" (click)="onAddBtnClicked(myform.value)">Add a new device</button>
+      <button class="btn btn-primary pull-right" (click)="onAddBtnClicked(myform.value)">Add to device list</button>
 
 
       <!-- <button type="submit" class="btn btn-primary">Add a new device</button> -->
     </form>
-    <div>
+    <!-- <div>
       {{myform.value | json}}
     </div>
 
-    <div>{{devicename.value}}</div>
+    <div>{{devicename.value}}</div> -->
 
   </div>
 </div>

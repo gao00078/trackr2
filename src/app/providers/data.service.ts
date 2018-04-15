@@ -5,6 +5,9 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class DataService {
+  private devices:Device[]=[];
+  private pas:User[] = [];
+  private admins:User[]=[];
 
   constructor(private http:Http) { }
 
@@ -24,9 +27,36 @@ export class DataService {
         }
       )
   }
+  getPaListFromFirebase(){
+    return this.http.get("https://trackr-pa.firebaseio.com/pausers.json")
+      .map(
+        (response:Response) =>{
+          const data = response.json();
+          this.pas = data;
+          return data;
+        }
+      )
+  }
+  getPaList(){
+    return this.pas;
+  }
+
+  getAdminList(){
+    return this.admins;
+  }
+  getAdminListFromFirebase(){
+    return this.http.get("https://trackr-ad.firebaseio.com/adminusers.json")
+      .map(
+        (response: Response) =>{
+          const data = response.json();
+          this.admins = data;
+          return data;
+        }
+      )
+
+  }
 
 
-  private devices:Device[];
 
   // private devices:Device[]=[
   //   new Device(1,"iPhone 5s-1","iOS","11.0.1",true),
@@ -55,6 +85,14 @@ export class Device{
     public os:string,
     public osVersion: string,
     public currentStatus: boolean,
+  ){}
+}
+
+export class User{
+  constructor(
+    public id:number,
+    public email:string,
+    public name:string
   ){}
 }
 

@@ -25,6 +25,11 @@ import { DeviceDetailComponent } from './device-detail/device-detail.component';
 import { DataService } from './providers/data.service';
 import { DeviceAddComponent } from './device-add/device-add.component';
 import { DeviceEditComponent } from './device-edit/device-edit.component';
+import { PaloginGuard } from './guard/palogin.guard';
+import { RegularloginGuard } from './guard/regularlogin.guard';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserAddComponent } from './user-add/user-add.component';
+import { AdminloginGuard } from './guard/adminlogin.guard';
 
 const routeConfig: Routes=[
   {path:'', redirectTo:'/login', pathMatch:'full'},
@@ -33,11 +38,12 @@ const routeConfig: Routes=[
     children:[
       {path:'',component:DeviceListComponent},
       {path:'devicedetail/:id', component:DeviceDetailComponent},
-      {path:'deviceedit/:id', component:DeviceEditComponent},
+      {path:'deviceedit/:id', component:DeviceEditComponent, canActivate:[PaloginGuard]},
 
-      {path:'deviceadd', component:DeviceAddComponent}
-    ]
-  },
+      {path:'deviceadd', component:DeviceAddComponent, canActivate:[PaloginGuard]},
+      {path:'userlist',component:UserListComponent,canActivate:[AdminloginGuard]}
+    ], canActivate:[RegularloginGuard]
+  } ,
   {path: 'signup', component: SignupComponent}
 
 ]
@@ -63,7 +69,9 @@ const routeConfig: Routes=[
     DeviceDetailComponent,
     SignupComponent,
     DeviceAddComponent,
-    DeviceEditComponent
+    DeviceEditComponent,
+    UserListComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +86,7 @@ const routeConfig: Routes=[
     // AngularFireAuthModule,
 
   ],
-  providers: [AuthService,DataService],
+  providers: [AuthService,DataService,PaloginGuard,RegularloginGuard,AdminloginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,6 +10,11 @@ import * as firebase from 'firebase';
 
 @Injectable()
 export class AuthService {
+  private currentUserEmail:string = "";
+
+  constructor(private router:Router) {
+    // this.user = afAuth.authState;
+  }
 
   signupUser(email:string, password:string){
     firebase.auth().createUserWithEmailAndPassword(email,password)
@@ -25,6 +30,7 @@ export class AuthService {
           console.log("user login!")
           console.log(response);
           console.log(response.email);
+          this.currentUserEmail = response.email;
           this.router.navigate(['/home']);
         }
       )
@@ -33,15 +39,16 @@ export class AuthService {
       )
   }
 
+  getCurrentUserEmail(){
+    return this.currentUserEmail;
+  }
   logout(){
     firebase.auth().signOut();
     this.router.navigate(['/login']);
 
   }
 
-  constructor(private router:Router) {
-    // this.user = afAuth.authState;
-  }
+
 
   // loginWithGoogle(){
   //   // this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());

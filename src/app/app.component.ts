@@ -6,10 +6,12 @@ import * as firebase from 'firebase';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  ngOnInit(){
+  ngOnInit() {
     firebase.initializeApp({
-      apiKey: "AIzaSyBIy7UACjyO3dOC99cs2Imat5xEXBxquc8",
-      authDomain: "ngfbauthtest.firebaseapp.com"
+      // apiKey: "AIzaSyBIy7UACjyO3dOC99cs2Imat5xEXBxquc8",
+      // authDomain: "ngfbauthtest.firebaseapp.com"
+      apiKey: "AIzaSyBgCgYKmZsBjx5fGompSfw4yKg_b_iWJEE",
+      authDomain: "track1-a4311.firebaseapp.com",
     });
   }
   title = 'app';
