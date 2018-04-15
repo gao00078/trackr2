@@ -4,9 +4,19 @@
 
 
 <div class="container">
-  <button *ngIf="isPaLoggedin" [routerLink]="['./deviceadd']" class="btn btn-success">Add a new device</button>
+  <!-- <button *ngIf="isPaLoggedin" [routerLink]="['./deviceadd']" class="btn btn-success">Add a new device</button> -->
   <!-- <button style="margin: 0 20px" class="btn btn-danger pull-right" (click)="onSave()">Save All Devices</button> -->
   <!-- <button class="btn btn-warning pull-right" (click)="onGet()">Get Devices</button> -->
+
+  <ul  *ngIf="isPaLoggedin||isAdminLoggedin" class="nav nav-pills">
+    <li class="">
+      <!-- <a  *ngIf="isPaLoggedin" [routerLink]="['./deviceadd']">Add a new device</a> -->
+      <button [routerLink]="['./deviceadd']" class="btn btn-success">Add a new device</button>
+
+    </li>
+    <li class="pull-right"><a  *ngIf="isAdminLoggedin" [routerLink]="['./userlist']" >User List</a></li>
+    <li class="pull-right"><a   *ngIf="isAdminLoggedin" [routerLink]="['/signup']">Add a new user</a></li>
+  </ul>
   <hr>
   <div class="row">
     <div class="col-xs-12">
@@ -14,6 +24,7 @@
         <thead>
           <tr>
             <th>Name</th>
+            <th  *ngIf="isPaLoggedin||isAdminLoggedin" ></th>
             <th>ID</th>
             <th>OS</th>
             <th>Version</th>
@@ -22,15 +33,23 @@
         </thead>
         <tbody>
           <tr *ngFor="let device of devices">
-            <td> <a [routerLink]="['./devicedetail',device.id]">{{device.name}}</a> </td>
-            <td>{{device.id}}</td>
+            <td> <a [routerLink]="['./devicedetail',device.id]">{{device.name}}</a>
+
+            </td>
+            <td  *ngIf="isPaLoggedin||isAdminLoggedin" >
+              <button class="btn btn-warning " [routerLink]="['./deviceedit',device.id]">Edit</button>
+
+            </td>
+            <td>{{device.id}}
+
+            </td>
             <td>{{device.os}}</td>
             <td>{{device.osVersion}}</td>
             <td>{{device.currentStatus}}</td>
             <td>
               <!-- <h4><a [routerLink]="['./device',device.id]">{{device.id}}</a></h4> -->
               <!-- <button class="btn btn-info"[routerLink]="['./devicedetail',device.id]">Details</button> -->
-              <button  *ngIf="isPaLoggedin" class="btn btn-warning " [routerLink]="['./deviceedit',device.id]">Edit</button>
+              <!-- <button  *ngIf="isPaLoggedin||isAdminLoggedin" class="btn btn-warning " [routerLink]="['./deviceedit',device.id]">Edit</button> -->
               <button  *ngIf="isAdminLoggedin" class="btn btn-danger pull-right" (click)=onDelete(device.id) >Delete</button>
 
 
