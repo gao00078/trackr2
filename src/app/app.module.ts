@@ -41,10 +41,11 @@ const routeConfig: Routes=[
       {path:'deviceedit/:id', component:DeviceEditComponent, canActivate:[PaloginGuard]},
 
       {path:'deviceadd', component:DeviceAddComponent, canActivate:[PaloginGuard]},
-      {path:'userlist',component:UserListComponent,canActivate:[AdminloginGuard]}
+      {path:'userlist',component:UserListComponent,canActivate:[AdminloginGuard]},
+      {path:'signup',component: SignupComponent,canActivate:[AdminloginGuard]}
     ], canActivate:[RegularloginGuard]
   } ,
-  {path: 'signup', component: SignupComponent}
+  // {path: 'signup', component: SignupComponent}
 
 ]
 

@@ -1,57 +1,88 @@
 import { Injectable } from '@angular/core';
-import { Http,Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
 
 
 @Injectable()
 export class DataService {
-  private devices:Device[]=[];
-  private pas:User[] = [];
-  private admins:User[]=[];
+  private devices: Device[] = [];
+  private pas: User[] = [];
+  private admins: User[] = [];
 
-  constructor(private http:Http) { }
+  constructor(private http: Http) { }
 
-  storeDevices(myDevices: Device[]){
+  storeUsers(users:User[]){
+    return this.http.put("https://trackr-users.firebaseio.com/users.json" ,
+      users);
+  }
+
+  getUsersFromFirebase(){
+    return this.http.get("https://trackr-users.firebaseio.com/users.json")
+      .map(
+        (response: Response) =>{
+          const data = response.json();
+          return data;
+        }
+      )
+  }
+
+  storeDevices(myDevices: Device[]) {
     return this.http.put("https://track1-a4311.firebaseio.com/devices.json",
       myDevices);
   }
-  getDevicesFromFirebase(){
+  getDevicesFromFirebase() {
     return this.http.get("https://track1-a4311.firebaseio.com/devices.json")
       .map(
-        (response: Response) =>{
-          // console.log(response);
-          const data = response.json();
-          // device-list组件创建的时候，这里的流被订阅，这里local devices被赋值。所以下面getDevice才能find
-          this.devices = data;
-          return data;
-        }
+      (response: Response) => {
+        // console.log(response);
+        const data = response.json();
+        // device-list组件创建的时候，这里的流被订阅，这里local devices被赋值。所以下面getDevice才能find
+        this.devices = data;
+        return data;
+      }
       )
   }
-  getPaListFromFirebase(){
+  getDevices() {
+    return this.devices;
+  }
+
+  getDevice(id: number) {
+    return this.devices.find((device) => device.id == id);
+  }
+
+
+
+  getPaListFromFirebase() {
     return this.http.get("https://trackr-pa.firebaseio.com/pausers.json")
       .map(
-        (response:Response) =>{
-          const data = response.json();
-          this.pas = data;
-          return data;
-        }
+      (response: Response) => {
+        const data = response.json();
+        this.pas = data;
+        return data;
+      }
       )
   }
-  getPaList(){
+
+  storePaListToFirebase(palist:User[]){
+    return this.http.put("https://trackr-pa.firebaseio.com/pausers.json",
+      palist);
+  }
+
+  getPaList() {
     return this.pas;
   }
 
-  getAdminList(){
+  getAdminList() {
     return this.admins;
   }
-  getAdminListFromFirebase(){
+  getAdminListFromFirebase() {
     return this.http.get("https://trackr-ad.firebaseio.com/adminusers.json")
       .map(
-        (response: Response) =>{
-          const data = response.json();
-          this.admins = data;
-          return data;
-        }
+      (response: Response) => {
+        const data = response.json();
+        this.admins = data;
+        return data;
+      }
       )
 
   }
@@ -67,33 +98,26 @@ export class DataService {
   // ];
 
 
-  getDevices(){
-    return this.devices;
-  }
-
-  getDevice(id:number){
-    return this.devices.find((device)=>device.id ==id);
-  }
 
 
 }
 
-export class Device{
+export class Device {
   constructor(
-    public id:number,
-    public name:string,
-    public os:string,
+    public id: number,
+    public name: string,
+    public os: string,
     public osVersion: string,
     public currentStatus: boolean,
-  ){}
+  ) { }
 }
 
-export class User{
+export class User {
   constructor(
-    public id:number,
-    public email:string,
-    public name:string
-  ){}
+    public id: number,
+    public email: string,
+    public name: string
+  ) { }
 }
 
 // export class User{

@@ -4,6 +4,10 @@
 
     <form (ngSubmit)="onSignup(f)" #f="ngForm">
       <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" ngModel class="form-control">
+      </div>
+      <div class="form-group">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" ngModel class="form-control">
       </div>

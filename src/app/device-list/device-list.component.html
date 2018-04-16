@@ -11,13 +11,13 @@
   <ul  *ngIf="isPaLoggedin||isAdminLoggedin" class="nav nav-pills">
     <li class="">
       <!-- <a  *ngIf="isPaLoggedin" [routerLink]="['./deviceadd']">Add a new device</a> -->
-      <button [routerLink]="['./deviceadd']" class="btn btn-success">Add a new device</button>
+      <button [routerLink]="['./deviceadd']" class="btn btn-primary">Add Device</button>
 
     </li>
-    <li class="pull-right"><a  *ngIf="isAdminLoggedin" [routerLink]="['./userlist']" >User List</a></li>
-    <li class="pull-right"><a   *ngIf="isAdminLoggedin" [routerLink]="['/signup']">Add a new user</a></li>
+    <li class="pull-right"><button  *ngIf="isAdminLoggedin" [routerLink]="['./userlist']" class="btn btn-primary" >User List</button></li>
+    <li class="pull-right"><button   *ngIf="isAdminLoggedin" [routerLink]="['./signup']" class="btn btn-primary">Add User</button></li>
   </ul>
-  <hr>
+
   <div class="row">
     <div class="col-xs-12">
       <table class="table table-condensed">

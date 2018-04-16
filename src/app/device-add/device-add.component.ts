@@ -36,9 +36,6 @@ export class DeviceAddComponent implements OnInit {
           this.devices = [];
           this.id = 1;
         }
-
-
-
       }
       )
 
@@ -57,7 +54,7 @@ export class DeviceAddComponent implements OnInit {
       (error) => console.log(error)
       )
   }
-
+}
   // onSubmit(value:any){
   //   this.dataService.getDevicesFromFirebase()
   //     .subscribe(
@@ -67,5 +64,3 @@ export class DeviceAddComponent implements OnInit {
   //       }
   //     )
   // }
-
-}
