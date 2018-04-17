@@ -1,0 +1,55 @@
+<p>
+  pa-list works!
+</p>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <form (ngSubmit)="onAddPa(f)" #f="ngForm" class="form-inline pull-right">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" ngModel class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" ngModel class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Add a user</button>
+      </form>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Type</th>
+            <th>ID</th>
+            <th>Empower</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pa of pas">
+            <td> {{pa.name}} </td>
+            <td>{{pa.email}}</td>
+            <td>XXX</td>
+            <td>{{pa.id}}</td>
+            <td>
+              <button  class="btn btn-danger pull-right" (click)=onDelete(pa.id)>Delete</button>
+              <!-- <button class="btn btn-info pull-right" (click)=onDismissPa(pa.id)>Dismiss PA</button> -->
+
+            </td>
+          </tr>
+        </tbody>
+
+
+
+      </table>
+
+    </div>
+  </div>
+  <div class="row">
+
+
+  </div>
+
+</div>

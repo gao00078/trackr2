@@ -2,8 +2,26 @@
   user-list works!
 </p>
 
+
 <div class="container">
-  <div class="row">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" [routerLink]="['./']" >All users</a>
+    </li>
+    <li class="nav-item pull-right">
+      <a class="nav-link" [routerLink]="['./admins']" >Admins</a>
+    </li>
+    <li class="nav-item pull-right">
+      <a class="nav-link" [routerLink]="['./pas']" >PAs</a>
+    </li>
+
+
+
+    <li class="nav-item ">
+      <a class="nav-link" [routerLink]="['./useradd']" >Add user</a>
+    </li>
+  </ul>
+  <!-- <div class="row">
     <div class="col-xs-12">
       <table class="table table-condensed">
         <thead>
@@ -22,12 +40,16 @@
             <td>xxxx</td>
             <td>{{user.id}}</td>
             <td>
-              <button class="btn btn-warning pull-right" (click)=onPaLevel(user.id)>Assign PA</button>
+              <button  class="btn btn-warning pull-right" (click)=onPaLevel(user.id)>Assign PA</button>
+              <button class="btn btn-info pull-right" (click)=onDismissPa(user.id)>Dismiss PA</button>
+
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-  </div>
+  </div> -->
+  <router-outlet></router-outlet>
+
 
 </div>

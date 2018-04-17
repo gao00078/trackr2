@@ -1,0 +1,35 @@
+<p>
+  admin-list works!
+</p>
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Type</th>
+            <th>ID</th>
+            <th>Empower</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let admin of admins">
+            <td> {{admin.name}} </td>
+            <td>{{admin.email}}</td>
+            <td>XXX</td>
+            <td>{{admin.id}}</td>
+            <td>
+              <!-- <button  class="btn btn-warning pull-right" (click)=onadminLevel(admin.id)>Assign admin</button>
+              <button class="btn btn-info pull-right" (click)=onDismissadmin(admin.id)>Dismiss admin</button> -->
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

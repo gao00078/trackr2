@@ -30,6 +30,9 @@ import { RegularloginGuard } from './guard/regularlogin.guard';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { AdminloginGuard } from './guard/adminlogin.guard';
+import { AllUsersListComponent } from './all-users-list/all-users-list.component';
+import { PaListComponent } from './pa-list/pa-list.component';
+import { AdminListComponent } from './admin-list/admin-list.component';
 
 const routeConfig: Routes=[
   {path:'', redirectTo:'/login', pathMatch:'full'},
@@ -41,7 +44,14 @@ const routeConfig: Routes=[
       {path:'deviceedit/:id', component:DeviceEditComponent, canActivate:[PaloginGuard]},
 
       {path:'deviceadd', component:DeviceAddComponent, canActivate:[PaloginGuard]},
-      {path:'userlist',component:UserListComponent,canActivate:[AdminloginGuard]},
+      {path:'usersmanage',component:UserListComponent,canActivate:[AdminloginGuard],
+        children:[
+          {path:'', component:AllUsersListComponent},
+          {path:'pas', component:PaListComponent},
+          {path:'admins', component:AdminListComponent},
+          {path:'useradd', component:SignupComponent}
+        ]
+      },
       {path:'signup',component: SignupComponent,canActivate:[AdminloginGuard]}
     ], canActivate:[RegularloginGuard]
   } ,
@@ -71,8 +81,11 @@ const routeConfig: Routes=[
     SignupComponent,
     DeviceAddComponent,
     DeviceEditComponent,
-    UserListComponent,
-    UserAddComponent
+    UserListComponent, //Users Management
+    UserAddComponent,
+    AllUsersListComponent,
+    PaListComponent,
+    AdminListComponent
   ],
   imports: [
     BrowserModule,

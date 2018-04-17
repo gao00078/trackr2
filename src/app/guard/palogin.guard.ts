@@ -32,6 +32,8 @@ export class PaloginGuard implements CanActivate{
     // console.log("there");
 
     return false;
+    // return true;
+
   }
 
 }

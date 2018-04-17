@@ -11,20 +11,7 @@ export class DataService {
 
   constructor(private http: Http) { }
 
-  storeUsers(users:User[]){
-    return this.http.put("https://trackr-users.firebaseio.com/users.json" ,
-      users);
-  }
 
-  getUsersFromFirebase(){
-    return this.http.get("https://trackr-users.firebaseio.com/users.json")
-      .map(
-        (response: Response) =>{
-          const data = response.json();
-          return data;
-        }
-      )
-  }
 
   storeDevices(myDevices: Device[]) {
     return this.http.put("https://track1-a4311.firebaseio.com/devices.json",
@@ -50,7 +37,20 @@ export class DataService {
     return this.devices.find((device) => device.id == id);
   }
 
+  storeUsers(users:User[]){
+    return this.http.put("https://trackr-users.firebaseio.com/users.json" ,
+      users);
+  }
 
+  getUsersFromFirebase(){
+    return this.http.get("https://trackr-users.firebaseio.com/users.json")
+      .map(
+        (response: Response) =>{
+          const data = response.json();
+          return data;
+        }
+      )
+  }
 
   getPaListFromFirebase() {
     return this.http.get("https://trackr-pa.firebaseio.com/pausers.json")
