@@ -67,6 +67,10 @@ export class DataService {
     return this.http.put("https://trackr-pa.firebaseio.com/pausers.json",
       palist);
   }
+  storeAdminListToFirebase(adminList:User[]){
+    return this.http.put("https://trackr-ad.firebaseio.com/adminusers.json",
+      adminList);
+  }
 
   getPaList() {
     return this.pas;

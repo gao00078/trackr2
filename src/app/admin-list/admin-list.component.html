@@ -5,6 +5,19 @@
 
   <div class="row">
     <div class="col-xs-12">
+
+      <form (ngSubmit)="onAddAdmin(f)" #f="ngForm" class="form-inline pull-right">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" ngModel class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" ngModel class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Add Admin</button>
+      </form>
+
       <table class="table table-condensed">
         <thead>
           <tr>
@@ -22,6 +35,8 @@
             <td>XXX</td>
             <td>{{admin.id}}</td>
             <td>
+              <button  class="btn btn-danger pull-right" (click)=onDelete(admin.id)>Delete</button>
+
               <!-- <button  class="btn btn-warning pull-right" (click)=onadminLevel(admin.id)>Assign admin</button>
               <button class="btn btn-info pull-right" (click)=onDismissadmin(admin.id)>Dismiss admin</button> -->
 
