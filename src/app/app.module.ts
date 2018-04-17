@@ -51,8 +51,8 @@ const routeConfig: Routes=[
           {path:'admins', component:AdminListComponent},
           {path:'useradd', component:SignupComponent}
         ]
-      },
-      {path:'signup',component: SignupComponent,canActivate:[AdminloginGuard]}
+      }
+      // {path:'signup',component: SignupComponent,canActivate:[AdminloginGuard]}
     ], canActivate:[RegularloginGuard]
   } ,
   // {path: 'signup', component: SignupComponent}

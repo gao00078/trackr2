@@ -15,7 +15,8 @@ export class RegularloginGuard implements CanActivate {
     if(this.authService.getCurrentUserEmail()){
       return true;
     }
-    return true; //to be changed Todo
+    // return true; //to be changed Todo
+    return false;
   }
 
 }

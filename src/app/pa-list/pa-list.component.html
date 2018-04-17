@@ -1,11 +1,11 @@
-<p>
+<!-- <p>
   pa-list works!
-</p>
+</p> -->
 
 <div class="container">
 
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12" style="margin-top:12px">
       <form (ngSubmit)="onAddPa(f)" #f="ngForm" class="form-inline pull-right">
         <div class="form-group">
           <label for="name">Name</label>
@@ -17,6 +17,12 @@
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Add PA</button>
       </form>
+    </div>
+
+
+
+    <div class="col-xs-12">
+
       <table class="table table-condensed">
         <thead>
           <tr>
