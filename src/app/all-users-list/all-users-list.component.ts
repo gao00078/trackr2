@@ -18,4 +18,14 @@ export class AllUsersListComponent implements OnInit {
       )
   }
 
+  onDelete(id:number){
+    console.log(id);
+    this.allUsers = this.allUsers.filter(user => user.id !=id);
+    this.dataService.storeUsers(this.allUsers)
+      .subscribe(
+        (response)=>console.log(response)
+        
+      )
+  }
+
 }

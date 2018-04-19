@@ -22,6 +22,8 @@
             <td>XXX</td>
             <td>{{user.id}}</td>
             <td>
+              <button  class="btn btn-danger pull-right" (click)=onDelete(user.id)>Delete</button>
+
               <!-- <button  class="btn btn-warning pull-right" (click)=onPaLevel(user.id)>Assign PA</button>
               <button class="btn btn-info pull-right" (click)=onDismissPa(user.id)>Dismiss PA</button> -->
 
@@ -32,4 +34,5 @@
     </div>
   </div>
 
+<div>Please note Delete is only for view purpose, for final deleting you need to delete user from firebase Authentificaion list</div>
 </div>

@@ -3,23 +3,23 @@
 </p> -->
 
 
-<div class="container">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" [routerLink]="['./']" >All users</a>
+<div class="container" >
+  <ul class="nav nav-pills nav-justified"  style="background-color: #e3f2fd;">
+    <li class="nav-item" [class.active]="isAllUsers" (click)="allClicked()">
+      <a data-toggle="tab" class="nav-link " [routerLink]="['./']" >All users</a>
     </li>
-    <li class="nav-item pull-right">
-      <a class="nav-link" [routerLink]="['./admins']" >Admins</a>
+    <li class="nav-item " [class.active]="isAdmins" (click)="adminClicked()">
+      <a data-toggle="tab" class="nav-link" [routerLink]="['./admins']" >Admins</a>
     </li>
-    <li class="nav-item pull-right">
-      <a class="nav-link" [routerLink]="['./pas']" >PAs</a>
+    <li class="nav-item " [class.active]= "isPas" (click)="pasClicked()">
+      <a data-toggle="tab" class="nav-link" [routerLink]="['./pas']" >PAs</a>
     </li>
 
 
 
-    <li class="nav-item ">
+    <!-- <li class="nav-item ">
       <a class="nav-link" [routerLink]="['./useradd']" >Add user</a>
-    </li>
+    </li> -->
   </ul>
   <!-- <div class="row">
     <div class="col-xs-12">

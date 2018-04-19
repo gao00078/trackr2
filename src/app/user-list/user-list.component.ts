@@ -12,9 +12,29 @@ export class UserListComponent implements OnInit {
   // private idnew:number;
   // private counter:number = 0;
   // // private isAble:boolean = false;
+  private isAllUsers:boolean = true;
+  private isAdmins:boolean = false;
+  private isPas:boolean =false;
 
 
   constructor(private dataService: DataService) { }
+
+  allClicked(){
+    this.isAllUsers =true;
+    this.isAdmins = false;
+    this.isPas =false;
+  }
+  adminClicked(){
+    this.isPas = false;
+    this.isAllUsers =false;
+    this.isAdmins = true;
+  }
+  pasClicked(){
+    this.isAdmins = false;
+    this.isPas =true;
+    this.isAllUsers =false;
+  }
+
 
   ngOnInit() {
     // this.dataService.getUsersFromFirebase()
