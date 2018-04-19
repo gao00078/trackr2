@@ -8,6 +8,7 @@ import { DataService, User } from '../providers/data.service';
 })
 export class AllUsersListComponent implements OnInit {
   private allUsers:User[]=[];
+  private isAddFormHidden:boolean = true;
 
   constructor(private dataService:DataService) { }
 
@@ -24,7 +25,7 @@ export class AllUsersListComponent implements OnInit {
     this.dataService.storeUsers(this.allUsers)
       .subscribe(
         (response)=>console.log(response)
-        
+
       )
   }
 

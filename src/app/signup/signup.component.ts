@@ -13,6 +13,7 @@ export class SignupComponent implements OnInit {
   private users:User[]=[];
   private id:number;
   private name:string="";
+  private count:number = 0;
 
   constructor(private authService:AuthService,
               private dataService:DataService,
@@ -39,7 +40,17 @@ export class SignupComponent implements OnInit {
     const email= form.value.email;
     const password = form.value.password;
     console.log(this.users);
-    this.users.push(new User(this.id, form.value.email, form.value.name));
+    for( let key in this.users){
+      console.log(this.users[key].email);
+      if(this.users[key].email == email){
+        this.count++;
+      }
+    }
+    if(this.count ==0){
+      this.users.push(new User(this.id, form.value.email, form.value.name));
+    }{
+      alert("the user already exists");
+    }
     console.log(this.users);
     this.dataService.storeUsers(this.users)
       .subscribe(
