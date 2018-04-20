@@ -10,6 +10,8 @@ import { NgForm } from '@angular/forms';
 export class PaListComponent implements OnInit {
   private pas:User[] = [];
   private idnew:number;
+  private count:number = 0;
+
   constructor(private dataService:DataService) { }
 
   ngOnInit() {
@@ -33,8 +35,16 @@ export class PaListComponent implements OnInit {
   onAddPa(form:NgForm){
     console.log(form.value.name);
     console.log(this.pas);
-
-    this.pas.push(new User(this.idnew++,form.value.email, form.value.name));
+    for(let key in this.pas){
+      if(this.pas[key].email == form.value.email){
+        this.count++;
+      }
+    }
+    if(this.count ==0){
+      this.pas.push(new User(this.idnew++,form.value.email, form.value.name));
+    }else{
+      alert("This PA user already exists. Pleae re-enter");
+    }
     console.log(this.pas);
 
     this.dataService.storePaListToFirebase(this.pas)

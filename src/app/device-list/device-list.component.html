@@ -8,10 +8,19 @@
   <!-- <button style="margin: 0 20px" class="btn btn-danger pull-right" (click)="onSave()">Save All Devices</button> -->
   <!-- <button class="btn btn-warning pull-right" (click)="onGet()">Get Devices</button> -->
 
-  <ul  *ngIf="isPaLoggedin||isAdminLoggedin" class="nav nav-pills">
+  <ul *ngIf="isPaLoggedin||isAdminLoggedin" class="nav nav-pills">
     <li class="">
       <!-- <a  *ngIf="isPaLoggedin" [routerLink]="['./deviceadd']">Add a new device</a> -->
-      <button [routerLink]="['./deviceadd']" class="btn btn-primary">Add Device</button>
+
+
+      <!-- <button [routerLink]="['./deviceadd']" class="btn btn-success "></button> -->
+      <!-- <span class="glyphicon glyphicon-plus"></span> -->
+      <a style="padding:0;margin:0" [routerLink]="['./deviceadd']"><i style="padding-left:5px" class="fa fa-plus-circle fa-3x"></i></a>
+      <!-- <i [routerLink]="['./deviceadd']" class="fa fa-plus-circle fa-5x"></i> -->
+
+      <!-- <div><i class="fas fa-plus-circle fa-5x" style="background:MistyRose"></i> Home</div> -->
+      <!-- <a style=" color:green">
+        <i class="fas fa-plus-circle"></i></a> -->
 
     </li>
     <!-- <li class="pull-right"><button  *ngIf="isAdminLoggedin" [routerLink]="['./usersmanage']" class="btn btn-primary" >Manage Users</button></li> -->
@@ -24,7 +33,7 @@
         <thead>
           <tr>
             <th>Name</th>
-            <th  *ngIf="isPaLoggedin||isAdminLoggedin" ></th>
+            <th *ngIf="isPaLoggedin||isAdminLoggedin"></th>
             <th>ID</th>
             <th>OS</th>
             <th>Version</th>
@@ -36,7 +45,7 @@
             <td> <a [routerLink]="['./devicedetail',device.id]">{{device.name}}</a>
 
             </td>
-            <td  *ngIf="isPaLoggedin||isAdminLoggedin" >
+            <td *ngIf="isPaLoggedin||isAdminLoggedin">
               <button class="btn btn-warning " [routerLink]="['./deviceedit',device.id]">Edit</button>
 
             </td>
@@ -50,7 +59,7 @@
               <!-- <h4><a [routerLink]="['./device',device.id]">{{device.id}}</a></h4> -->
               <!-- <button class="btn btn-info"[routerLink]="['./devicedetail',device.id]">Details</button> -->
               <!-- <button  *ngIf="isPaLoggedin||isAdminLoggedin" class="btn btn-warning " [routerLink]="['./deviceedit',device.id]">Edit</button> -->
-              <button  *ngIf="isAdminLoggedin" class="btn btn-danger pull-right" (click)=onDelete(device.id) >Delete</button>
+              <button *ngIf="isAdminLoggedin" class="btn btn-danger pull-right" (click)=onDelete(device.id)>Delete</button>
 
 
 

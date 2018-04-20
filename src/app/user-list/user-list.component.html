@@ -4,9 +4,11 @@
 
 
 <div class="container" >
-  <ul class="nav nav-pills nav-justified"  style="background-color: #e3f2fd;">
+
+  <!--909090   D8D8D8-->
+  <ul class="nav nav-pills nav-justified"  style="background-color: #D8D8D8;">
     <li class="nav-item" [class.active]="isAllUsers" (click)="allClicked()">
-      <a data-toggle="tab" class="nav-link " [routerLink]="['./']" >All users</a>
+      <a data-toggle="tab" class="btn btn-senondary " [routerLink]="['./']" >All users</a>
     </li>
     <li class="nav-item " [class.active]="isAdmins" (click)="adminClicked()">
       <a data-toggle="tab" class="nav-link" [routerLink]="['./admins']" >Admins</a>

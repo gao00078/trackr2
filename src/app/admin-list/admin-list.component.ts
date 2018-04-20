@@ -10,6 +10,7 @@ import { NgForm } from '@angular/forms';
 export class AdminListComponent implements OnInit {
   private admins:User[]=[];
   private idnew:number;
+  private count:number = 0;
 
   constructor(private dataService:DataService) { }
 
@@ -35,19 +36,30 @@ export class AdminListComponent implements OnInit {
 
   }
   onAddAdmin(form:NgForm){
-    this.admins.push(new User(this.idnew++,form.value.email, form.value.name));
-    this.dataService.storeAdminListToFirebase(this.admins)
-      .subscribe(
-        (response) => console.log(response)
+    for(let key in this.admins){
+      if(this.admins[key].email == form.value.email){
+        this.count++;
+      }
+    }
+    if(this.count ==0){
+      this.admins.push(new User(this.idnew++,form.value.email, form.value.name));
+      this.dataService.storeAdminListToFirebase(this.admins)
+        .subscribe(
+          (response) => console.log(response)
 
-      )
+        )
+    }else{
+      alert("This Admin user already exists. Pleae re-enter");
+
+    }
+
   }
   onDelete(id:number){
     this.admins = this.admins.filter(admin => admin.id !=id);
     this.dataService.storeAdminListToFirebase(this.admins)
       .subscribe(
         (response)=>console.log(response)
-        
+
       )
   }
 

@@ -39,28 +39,32 @@ export class SignupComponent implements OnInit {
   onSignup(form: NgForm ){
     const email= form.value.email;
     const password = form.value.password;
-    console.log(this.users);
+    // console.log(this.users);
     for( let key in this.users){
-      console.log(this.users[key].email);
+      // console.log(this.users[key].email);
       if(this.users[key].email == email){
         this.count++;
       }
     }
     if(this.count ==0){
       this.users.push(new User(this.id, form.value.email, form.value.name));
-    }{
-      alert("the user already exists");
+
+      this.dataService.storeUsers(this.users)
+        .subscribe(
+          (response) => {
+            console.log(response);
+            this.router.navigate(['/home/usersmanage']);
+          },
+          (error)=>console.log(error)
+        )
+      this.authService.signupUser(email, password);
+
+
+    }else{
+      alert("The user already exists. Pleae re-enter");
     }
-    console.log(this.users);
-    this.dataService.storeUsers(this.users)
-      .subscribe(
-        (response) => {
-          console.log(response);
-          this.router.navigate(['/home/usersmanage']);
-        },
-        (error)=>console.log(error)
-      )
-    this.authService.signupUser(email, password);
+    // console.log(this.users);
+
 
   }
 
