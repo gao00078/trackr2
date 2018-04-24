@@ -10,8 +10,8 @@ export class RegularloginGuard implements CanActivate {
   canActivate() {
     // constructor(private authService:AuthService){}
 
-    console.log("RegularloginGuard test");
-    console.log(this.authService.getCurrentUserEmail());
+    // console.log("RegularloginGuard test");
+    // console.log(this.authService.getCurrentUserEmail());
     if(this.authService.getCurrentUserEmail()){
       return true;
     }

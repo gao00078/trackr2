@@ -15,7 +15,7 @@
           <label for="email">Email</label>
           <input type="email" id="email" name="email" ngModel class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Add PA</button>
+        <button type="submit" class="btn btn-success" [disabled]="!f.valid">Add PA</button>
       </form>
     </div>
 
@@ -28,19 +28,22 @@
           <tr>
             <th>Name</th>
             <th>Email</th>
-            <th>Type</th>
-            <th>ID</th>
-            <th>Empower</th>
+            <!-- <th>Type</th> -->
+            <!-- <th>ID</th> -->
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let pa of pas">
             <td> {{pa.name}} </td>
             <td>{{pa.email}}</td>
-            <td>XXX</td>
-            <td>{{pa.id}}</td>
+            <!-- <td>XXX</td> -->
+            <!-- <td>{{pa.id}}</td> -->
             <td>
-              <button  class="btn btn-danger pull-right" (click)=onDelete(pa.id)>Delete</button>
+              <!-- <button  class="btn btn-danger pull-right" (click)=onDelete(pa.id)>Delete</button> -->
+
+              <a (click)=onDelete(pa.id) ><i class="far fa-trash-alt fa-lg"></i></a>
+
               <!-- <button class="btn btn-info pull-right" (click)=onDismissPa(pa.id)>Dismiss PA</button> -->
 
             </td>

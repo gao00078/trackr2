@@ -42,16 +42,43 @@ export class DeviceAddComponent implements OnInit {
   }
   onAddBtnClicked(value: any) {
 
-    this.devices.push(new Device(this.id, value.devicename, value.os, value.osVersion, this.currentStatus));
-    console.log(this.devices);
+    // this.devices.push(new Device(this.id, value.devicename, value.os, value.osVersion, this.currentStatus));
+    this.devices.push(new Device(this.id,
+                                 "", //qrCode
+                                 value.color,
+                                 value.imei,
+                                 value.devicename,
+                                 value.os,
+                                 value.osVersion,
+                                 "", //Device_Photo
+                                 value.resolution,
+                                 value.screenSize,
+                                 "Available",
+                                 value.deviceType,
+                                 value.manufacturer,
+                                 "amin photo",
+                                 "",//date picker
+                                 "",//signouu email
+                                 "",//signout permit
+                                 "permit email",//this is not being used
+                                 "stud photo",
+                                 "",//signout time
+                                 45.3481932,
+                                 -75.755101
+                              ));
+
+    // console.log(this.devices);
     // console.log(value.devicename);
     this.dataService.storeDevices(this.devices)
       .subscribe(
-      (response) => {console.log(response);
+      (response) => {
+        // console.log(response);
         this.router.navigate(['/home']);
 
       },
-      (error) => console.log(error)
+      (error) => {
+        // console.log(error)
+      }
       )
   }
 }

@@ -7,7 +7,7 @@ import { DataService, User } from '../providers/data.service';
   styleUrls: ['./all-users-list.component.css']
 })
 export class AllUsersListComponent implements OnInit {
-  private allUsers:User[]=[];
+   allUsers:User[]=[];
   private isAddFormHidden:boolean = true;
 
   constructor(private dataService:DataService) { }
@@ -20,12 +20,13 @@ export class AllUsersListComponent implements OnInit {
   }
 
   onDelete(id:number){
-    console.log(id);
+    // console.log(id);
     this.allUsers = this.allUsers.filter(user => user.id !=id);
     this.dataService.storeUsers(this.allUsers)
       .subscribe(
-        (response)=>console.log(response)
-
+        (response)=>{
+          // console.log(response)
+}
       )
   }
 

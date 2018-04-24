@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+/* a {
+    background-color: inherit;
+}
+a {background-color:transparent !important;} */
+i{
+  color: #5cb85c;
+}
+i:hover{
+  color: green;
+}
+
+.fa-trash-alt{
+  color: #d9534f;
+}
+.fa-trash-alt:hover{
+  color: red;
+
+}
+
+.fa-edit{
+  color: #ffc844;
+}
+.fa-edit:hover{
+  color: orange;
+}
+
+nav.navbar.navbar-inverse{
+margin-bottom: 5px;
+}
+/* .navbar-default { margin-bottom: 0px; } */

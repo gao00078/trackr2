@@ -34,6 +34,9 @@ import { AllUsersListComponent } from './all-users-list/all-users-list.component
 import { PaListComponent } from './pa-list/pa-list.component';
 import { AdminListComponent } from './admin-list/admin-list.component';
 
+import {AgmCoreModule} from "@agm/core";
+import { FilterPipe } from './pipe/filter.pipe';
+
 const routeConfig: Routes=[
   {path:'', redirectTo:'/login', pathMatch:'full'},
   {path: 'login', component:LoginPageComponent},
@@ -85,14 +88,18 @@ const routeConfig: Routes=[
     UserAddComponent,
     AllUsersListComponent,
     PaListComponent,
-    AdminListComponent
+    AdminListComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     HttpClientModule,
-    RouterModule.forRoot(routeConfig)
+    RouterModule.forRoot(routeConfig),
+    AgmCoreModule.forRoot({
+      apiKey:"AIzaSyBpX7-Yrhm04YyO4p6xqRpFrpKkiEXGvS0"
+    })
     // RouterModule.forChild(routeConfig)
 
     // AngularFireModule.initializeApp(firebaseConfig),

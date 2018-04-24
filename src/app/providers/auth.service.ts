@@ -19,7 +19,9 @@ export class AuthService {
   signupUser(email:string, password:string){
     firebase.auth().createUserWithEmailAndPassword(email,password)
       .catch(
-        error => console.log(error)
+        error => {
+          // console.log(error)
+        }
       )
   }
 
@@ -27,15 +29,15 @@ export class AuthService {
     firebase.auth().signInWithEmailAndPassword(email,password)
       .then(
         response =>{
-          console.log("user login!")
-          console.log(response);
-          console.log(response.email);
+          // console.log("user login!")
+          // console.log(response);
+          // console.log(response.email);
           this.currentUserEmail = response.email;
           this.router.navigate(['/home']);
         }
       )
       .catch(
-        error => console.log(error)
+        // error => console.log(error)
       )
   }
 

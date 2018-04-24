@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./pa-list.component.css']
 })
 export class PaListComponent implements OnInit {
-  private pas:User[] = [];
+   pas:User[] = [];
   private idnew:number;
   private count:number = 0;
 
@@ -18,7 +18,7 @@ export class PaListComponent implements OnInit {
     this.dataService.getPaListFromFirebase()
       .subscribe(
         (data)=>{this.pas = data;
-        console.log(this.pas);
+        // console.log(this.pas);
         if(data !=null){
           let idArr:number[]=[];
           this.pas.forEach(item => idArr.push(item.id));
@@ -33,8 +33,8 @@ export class PaListComponent implements OnInit {
     // this.pas = this.dataService.getPaList();
   }
   onAddPa(form:NgForm){
-    console.log(form.value.name);
-    console.log(this.pas);
+    // console.log(form.value.name);
+    // console.log(this.pas);
     for(let key in this.pas){
       if(this.pas[key].email == form.value.email){
         this.count++;
@@ -45,19 +45,23 @@ export class PaListComponent implements OnInit {
     }else{
       alert("This PA user already exists. Pleae re-enter");
     }
-    console.log(this.pas);
+    // console.log(this.pas);
 
     this.dataService.storePaListToFirebase(this.pas)
       .subscribe(
-        (response) => console.log(response)
+        (response) => {
+          // console.log(response)
+        }
       )
   }
   onDelete(id:number){
-    console.log(id);
+    // console.log(id);
     this.pas = this.pas.filter(pa => pa.id !=id);
     this.dataService.storePaListToFirebase(this.pas)
     .subscribe(
-      (response)=>console.log(response)
+      (response)=>{
+        // console.log(response)
+      }
     )
   }
 

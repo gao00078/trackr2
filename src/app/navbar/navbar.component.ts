@@ -11,13 +11,13 @@ import { PaloginGuard } from '../guard/palogin.guard';
 })
 export class NavbarComponent implements OnInit {
 
-  private loggedinUser:string;
+   loggedinUser:string;
 
-  private isHome:boolean =true;
+  isHome:boolean =true;
   private isManage:boolean =false;
-  private isAdminLoggedin:boolean ;
+  isAdminLoggedin:boolean ;
   private isPaLoggedin:boolean;
-  private title:string ="Student: ";
+   title:string ="Student: ";
 
   constructor(private authService:AuthService,
               private dataService:DataService,
@@ -49,8 +49,8 @@ export class NavbarComponent implements OnInit {
       .subscribe(
         (data) =>{
           this.isAdminLoggedin = this.adminGuard.canActivate();
-          console.log("isAdminLoggedin here");
-          console.log(this.isAdminLoggedin);
+          // console.log("isAdminLoggedin here");
+          // console.log(this.isAdminLoggedin);
           if(this.isAdminLoggedin){
             this.title = "Admin: ";
           }

@@ -21,8 +21,8 @@ export class AdminloginGuard implements CanActivate {
       //   this.adminList = data;
       // }
       // )
-    console.log(this.adminList);
-    console.log(this.authService.getCurrentUserEmail());
+    // console.log(this.adminList);
+    // console.log(this.authService.getCurrentUserEmail());
     for (let admin in this.adminList) {
       if (this.adminList[admin].email == this.authService.getCurrentUserEmail()) {
         // this.isAdminLoggedin =true;

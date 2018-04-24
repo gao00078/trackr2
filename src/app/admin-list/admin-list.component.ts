@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./admin-list.component.css']
 })
 export class AdminListComponent implements OnInit {
-  private admins:User[]=[];
+   admins:User[]=[];
   private idnew:number;
   private count:number = 0;
 
@@ -21,7 +21,7 @@ export class AdminListComponent implements OnInit {
       .subscribe(
         (data)=> {
           this.admins = data;
-          console.log(data);
+          // console.log(data);
           if(data !=null){
             let idArr:number[]=[];
             this.admins.forEach(item => idArr.push(item.id));
@@ -45,7 +45,9 @@ export class AdminListComponent implements OnInit {
       this.admins.push(new User(this.idnew++,form.value.email, form.value.name));
       this.dataService.storeAdminListToFirebase(this.admins)
         .subscribe(
-          (response) => console.log(response)
+          (response) => {
+            // console.log(response)
+          }
 
         )
     }else{
@@ -58,7 +60,9 @@ export class AdminListComponent implements OnInit {
     this.admins = this.admins.filter(admin => admin.id !=id);
     this.dataService.storeAdminListToFirebase(this.admins)
       .subscribe(
-        (response)=>console.log(response)
+        (response)=>{
+          // console.log(response)
+        }
 
       )
   }

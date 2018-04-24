@@ -15,7 +15,7 @@
           <label for="email">Email</label>
           <input type="email" id="email" name="email" ngModel class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Add Admin</button>
+        <button type="submit" class="btn btn-success" [disabled]="!f.valid">Add Admin</button>
       </form>
 
       <table class="table table-condensed">
@@ -23,19 +23,22 @@
           <tr>
             <th>Name</th>
             <th>Email</th>
-            <th>Type</th>
-            <th>ID</th>
-            <th>Empower</th>
+            <!-- <th>Type</th> -->
+            <!-- <th>ID</th> -->
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let admin of admins">
             <td> {{admin.name}} </td>
             <td>{{admin.email}}</td>
-            <td>XXX</td>
-            <td>{{admin.id}}</td>
+            <!-- <td>XXX</td> -->
+            <!-- <td>{{admin.id}}</td> -->
             <td>
-              <button  class="btn btn-danger pull-right" (click)=onDelete(admin.id)>Delete</button>
+              <!-- <button  class="btn btn-danger pull-right" (click)=onDelete(admin.id)>Delete</button> -->
+
+              <a (click)=onDelete(admin.id) ><i class="far fa-trash-alt fa-lg"></i></a>
+
 
               <!-- <button  class="btn btn-warning pull-right" (click)=onadminLevel(admin.id)>Assign admin</button>
               <button class="btn btn-info pull-right" (click)=onDismissadmin(admin.id)>Dismiss admin</button> -->

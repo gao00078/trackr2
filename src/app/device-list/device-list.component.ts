@@ -14,13 +14,14 @@ export class DeviceListComponent implements OnInit {
 
   private show:boolean =true;
 
-  private isAdminLoggedin:boolean;
+   isAdminLoggedin:boolean;
   // private adminList:User[]=[];
-  private isPaLoggedin:boolean;
+   isPaLoggedin:boolean;
 
-  private devices: Device[]=[];
+   devices: Device[]=[];
 
   // private pas:User[]=[];
+   title:string = null ;
 
   constructor(private dataService: DataService,
               // private authService: AuthService,
@@ -34,7 +35,9 @@ export class DeviceListComponent implements OnInit {
     //initializaiton finish dataService http get requests
     this.dataService.getDevicesFromFirebase()
       .subscribe(
-      (data) => this.devices = data
+      (data) => {this.devices = data;
+        // console.log(this.devices);
+      }
       )
     this.dataService.getPaListFromFirebase()
       .subscribe(
@@ -47,8 +50,8 @@ export class DeviceListComponent implements OnInit {
       .subscribe(
         (data) =>{
           this.isAdminLoggedin = this.adminGuard.canActivate();
-          console.log("isAdminLoggedin here");
-          console.log(this.isAdminLoggedin);
+          // console.log("isAdminLoggedin here");
+          // console.log(this.isAdminLoggedin);
 
         }
       )
@@ -77,7 +80,7 @@ export class DeviceListComponent implements OnInit {
 
   onDelete(id: number) {
     // console.log(id);
-    console.log(this.devices);
+    // console.log(this.devices);
     // let newDevices:Device[];
     this.devices = this.devices.filter(device => device.id != id);
     // this.devices = newDevices;
@@ -85,10 +88,12 @@ export class DeviceListComponent implements OnInit {
     this.dataService.storeDevices(this.devices)
       .subscribe(
       (response) => {
-        console.log(response);
+        // console.log(response);
         // location.reload()
       },
-      (error) => console.log(error)
+      (error) => {
+        // console.log(error)
+      }
       )
 
   }

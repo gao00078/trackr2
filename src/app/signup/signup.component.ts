@@ -52,10 +52,12 @@ export class SignupComponent implements OnInit {
       this.dataService.storeUsers(this.users)
         .subscribe(
           (response) => {
-            console.log(response);
+            // console.log(response);
             this.router.navigate(['/home/usersmanage']);
           },
-          (error)=>console.log(error)
+          (error)=>{
+            // console.log(error)
+          }
         )
       this.authService.signupUser(email, password);
 

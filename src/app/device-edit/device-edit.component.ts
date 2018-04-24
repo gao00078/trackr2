@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DeviceEditComponent implements OnInit {
   private deviceId:number;
-  private device:Device;
+   device:Device;
   private devices:Device[];
 
   constructor(
@@ -36,19 +36,32 @@ export class DeviceEditComponent implements OnInit {
 
     for(let device in this.devices){
       if(this.devices[device].id == this.device.id){
-        this.devices[device].name = value.devicename;
-        this.devices[device].os = value.os;
-        this.devices[device].osVersion = value.osVersion;
+        this.devices[device].Device_Name = value.devicename;
+        this.devices[device].Device_Type = value.deviceType;
+        this.devices[device].Device_OS = value.os;
+        this.devices[device].Device_OSv = value.osVersion;
+        this.devices[device].Device_Color = value.deviceColor;
+        this.devices[device].Device_IMEI = value.imei;
+        this.devices[device].Device_Resolution = value.resolution;
+        this.devices[device].Device_ScreenSz = value.screenSize;
+        this.devices[device].Manufacturer = value.manufacturer;
+
+
+
+
       }
     }
 
     this.dataService.storeDevices(this.devices)
       .subscribe(
-        (response) => {console.log(response);
+        (response) => {
+          // console.log(response);
           this.router.navigate(['/home']);
 
         },
-        (error)=> console.log(error)
+        (error)=> {
+          // console.log(error)
+        }
       )
 
     // console.log(this.device.id);

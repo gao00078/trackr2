@@ -77,21 +77,21 @@ export class PaloginGuard implements CanActivate{
 
 
     this.paList = this.dataService.getPaList();
-    console.log(this.paList);
+    // console.log(this.paList);
 
     this.adminList = this.dataService.getAdminList();
-    console.log(this.adminList);
+    // console.log(this.adminList);
 
     this.paAdminTotalList = this.adminList.push.apply(this.adminList,this.paList);
     // this.paAdminTotalList = this.adminList.push(...this.paList);
 
-    console.log(this.paAdminTotalList);
+    // console.log(this.paAdminTotalList);
 
 
-    console.log(this.authService.getCurrentUserEmail());
+    // console.log(this.authService.getCurrentUserEmail());
     for(let pa in this.adminList){
       if(this.adminList[pa].email == this.authService.getCurrentUserEmail() ){
-        console.log("test?");
+        // console.log("test?");
         // this.router.navigate(['./deviceadd']);
 
         return true;

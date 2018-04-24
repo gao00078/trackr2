@@ -1,16 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
+import * as firebase from 'firebase';
 
 
 @Injectable()
 export class DataService {
-  private devices: Device[] = [];
+  // private devices: Device[] = [];
+  private devices: any;
+
   private pas: User[] = [];
   private admins: User[] = [];
+  private imgUrl:string;
+
 
   constructor(private http: Http) { }
 
+// // for storage images
+// getStdInImageUrl() {
+//    const stdInStorageRef = firebase.storage().ref().child("StudentPhoto/" +"355358080537528_student_in.png");
+//    stdInStorageRef.getDownloadURL().then(url => {
+//      console.log(url);
+//      this.imgUrl = url;
+//      return this.imgUrl;
+//
+//    });
+//  }
 
 
   storeDevices(myDevices: Device[]) {
@@ -37,18 +52,18 @@ export class DataService {
     return this.devices.find((device) => device.id == id);
   }
 
-  storeUsers(users:User[]){
-    return this.http.put("https://trackr-users.firebaseio.com/users.json" ,
+  storeUsers(users: User[]) {
+    return this.http.put("https://trackr-users.firebaseio.com/users.json",
       users);
   }
 
-  getUsersFromFirebase(){
+  getUsersFromFirebase() {
     return this.http.get("https://trackr-users.firebaseio.com/users.json")
       .map(
-        (response: Response) =>{
-          const data = response.json();
-          return data;
-        }
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
       )
   }
 
@@ -63,11 +78,11 @@ export class DataService {
       )
   }
 
-  storePaListToFirebase(palist:User[]){
+  storePaListToFirebase(palist: User[]) {
     return this.http.put("https://trackr-pa.firebaseio.com/pausers.json",
       palist);
   }
-  storeAdminListToFirebase(adminList:User[]){
+  storeAdminListToFirebase(adminList: User[]) {
     return this.http.put("https://trackr-ad.firebaseio.com/adminusers.json",
       adminList);
   }
@@ -106,16 +121,42 @@ export class DataService {
 
 }
 
+// export class Device {
+//   constructor(
+//     public id: number,
+//     public name: string,
+//     public os: string,
+//     public osVersion: string,
+//     public currentStatus: boolean,
+//   ) { }
+// }
+
 export class Device {
   constructor(
     public id: number,
-    public name: string,
-    public os: string,
-    public osVersion: string,
-    public currentStatus: boolean,
+    public qrCode: string,
+    public Device_Color: string,
+    public Device_IMEI: string,
+    public Device_Name: string,
+    public Device_OS: string,
+    public Device_OSv: string,
+    public Device_Photo: string,
+    public Device_Resolution: string,
+    public Device_ScreenSz: string,
+    public Device_Status: string,
+    public Device_Type: string,
+    public Manufacturer: string,
+    public Signout_AdminPhoto: string,
+    public Signout_DatePikr: string,
+    public Signout_Email: string,
+    public Signout_Permit: string, //sign out type.
+    public Signout_PermitEmail: string,
+    public Signout_StuPhoto: string,
+    public Signout_Time: string,
+    public lat: number,
+    public lng: number
   ) { }
 }
-
 export class User {
   constructor(
     public id: number,
