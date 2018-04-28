@@ -39,7 +39,7 @@ export class DeviceListComponent implements OnInit {
       .subscribe(
       (data) => {
       this.devices = data;
-      console.dir(this.devices);
+      // console.dir(this.devices);
       //if "null" values are to be removed:
       this.devices = data.filter(item=>item);
       }

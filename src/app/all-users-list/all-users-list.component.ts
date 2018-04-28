@@ -20,14 +20,14 @@ export class AllUsersListComponent implements OnInit {
     this.dataService.getPaListFromFirebase()
       .subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.pas = res;
       }
       )
     this.dataService.getAdminListFromFirebase()
       .subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.admins = res;
       }
       )
@@ -41,8 +41,8 @@ export class AllUsersListComponent implements OnInit {
         this.allUsers = data;
         this.allUsersOrigin = data;
         // console.log(this.allUsers);
-        console.log(this.pas);
-        console.log(this.admins);
+        // console.log(this.pas);
+        // console.log(this.admins);
 
 
 
