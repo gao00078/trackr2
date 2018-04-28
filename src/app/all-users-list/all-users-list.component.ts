@@ -16,6 +16,21 @@ export class AllUsersListComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
+
+    this.dataService.getPaListFromFirebase()
+      .subscribe(
+      res => {
+        console.log(res);
+        this.pas = res;
+      }
+      )
+    this.dataService.getAdminListFromFirebase()
+      .subscribe(
+      res => {
+        console.log(res);
+        this.admins = res;
+      }
+      )
     this.pas = this.dataService.getPaList();
     this.admins = this.dataService.getAdminList();
 
@@ -23,17 +38,30 @@ export class AllUsersListComponent implements OnInit {
     this.dataService.getUsersFromFirebase()
       .subscribe(
       (data) => {
-      this.allUsers = data;
+        this.allUsers = data;
         this.allUsersOrigin = data;
         // console.log(this.allUsers);
-        // console.log(this.pas);
-        // console.log(this.admins);
+        console.log(this.pas);
+        console.log(this.admins);
+
+
+
 
         if (this.allUsers) {
+
+          for(let key in this.allUsers){
+              this.allUsers[key].type = 'Student';
+          }
+
+
+
           for (let key1 in this.allUsers) {
             for (let key2 in this.pas) {
               if (this.allUsers[key1].email == this.pas[key2].email) {
-                this.allUsers[key1].type = 'pa';
+                this.allUsers[key1].type = 'PA';
+              } else {
+                // this.allUsers[key1].type = 'Student';
+
               }
             }
           }
@@ -41,10 +69,31 @@ export class AllUsersListComponent implements OnInit {
           for (let key1 in this.allUsers) {
             for (let key2 in this.admins) {
               if (this.allUsers[key1].email == this.admins[key2].email) {
-                this.allUsers[key1].type = 'admin';
+                this.allUsers[key1].type = 'Admin';
               }
             }
           }
+
+          // if (this.allUsers) {
+          //   for (let key1 in this.allUsers) {
+          //     for (let key2 in this.pas) {
+          //       if (this.allUsers[key1].email == this.pas[key2].email) {
+          //         this.allUsers[key1].type = 'PA';
+          //       }else{
+          //         this.allUsers[key1].type = 'Student';
+          //       }
+          //     }
+          //   }
+          //
+          //   for (let key1 in this.allUsers) {
+          //     for (let key2 in this.admins) {
+          //       if (this.allUsers[key1].email == this.admins[key2].email) {
+          //         this.allUsers[key1].type = 'Admin';
+          //       }else{
+          //         this.allUsers[key1].type = 'Student';
+          //       }
+          //     }
+          //   }
 
 
 
@@ -61,21 +110,21 @@ export class AllUsersListComponent implements OnInit {
     // console.log(id);
 
 
-    // this.allUsers = this.allUsers.filter(user => user.id != id);
-    // this.dataService.storeUsers(this.allUsers)
-    //   .subscribe(
-    //   (response) => {
-    //     // console.log(response)
-    //   }
-    //   )
-
-    this.allUsersOrigin = this.allUsersOrigin.filter(user => user.id != id);
-    this.dataService.storeUsers(this.allUsersOrigin)
+    this.allUsers = this.allUsers.filter(user => user.id != id);
+    this.dataService.storeUsers(this.allUsers)
       .subscribe(
       (response) => {
         // console.log(response)
       }
       )
+    // console.log("here")
+    // this.allUsersOrigin = this.allUsersOrigin.filter(user => user.id != id);
+    // this.dataService.storeUsers(this.allUsersOrigin)
+    //   .subscribe(
+    //   (response) => {
+    //     // console.log(response)
+    //   }
+    //   )
   }
 
 }

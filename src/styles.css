@@ -3,11 +3,19 @@
     background-color: inherit;
 }
 a {background-color:transparent !important;} */
-i{
+.fa-plus-circle {
   color: #5cb85c;
 }
-i:hover{
+.fa-plus-circle:hover{
   color: green;
+}
+
+.fa-user-plus{
+  color: #5cb85c;
+}
+.fa-user-plus:hover{
+  color: green;
+
 }
 
 .fa-trash-alt{

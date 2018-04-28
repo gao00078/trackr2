@@ -80,7 +80,7 @@
         <thead>
           <tr>
             <th>Name</th>
-            <th *ngIf="isPaLoggedin||isAdminLoggedin">Edit</th>
+            <!-- <th *ngIf="isPaLoggedin||isAdminLoggedin">Edit</th> -->
             <!-- <th>ID</th> -->
             <th>OS</th>
             <th>Version</th>
@@ -92,19 +92,15 @@
           <tr *ngFor="let device of devices | filter:title">
             <td> <a [routerLink]="['./devicedetail',device.id]">{{device.Device_Name}}</a>
             </td>
-            <td *ngIf="isPaLoggedin||isAdminLoggedin">
-              <!-- <button class="btn btn-warning " [routerLink]="['./deviceedit',device.id]">Edit</button> -->
+            <!-- <td *ngIf="isPaLoggedin||isAdminLoggedin">
               <a [routerLink]="['./deviceedit',device.id]"><i class="far fa-edit fa-lg"></i></a>
-              <!-- <a [routerLink]="['./deviceedit',device.id]"><i class="fas fa-pencil-alt fa-1x"></i></a> -->
-              <!-- </td>
-            <td>{{device.id}} -->
-            </td>
+            </td> -->
             <td>{{device.Device_OS}}</td>
             <td>{{device.Device_OSv}}</td>
             <td>
               <!-- {{device.Device_Status}} -->
               <span *ngIf="device.Device_Status!='Available'"><i style="color:#d9534f"  class="fas fa-minus-circle fa-lg"></i></span>
-              <span *ngIf="device.Device_Status=='Available'"><i class="fas fa-check-circle fa-lg"></i></span>
+              <span *ngIf="device.Device_Status=='Available'"><i style="color:#5cb85c" class="fas fa-check-circle fa-lg"></i></span>
 
             </td>
             <td>
@@ -113,7 +109,7 @@
               <!-- <button  *ngIf="isPaLoggedin||isAdminLoggedin" class="btn btn-warning " [routerLink]="['./deviceedit',device.id]">Edit</button> -->
               <!-- <button *ngIf="isAdminLoggedin" class="btn btn-danger pull-right" (click)=onDelete(device.id)>Delete</button> -->
 
-              <a *ngIf="isPaLoggedin||isAdminLoggedin" [routerLink]="['./deviceedit',device.id]"><i class="far fa-edit fa-lg"></i></a>
+              <a style="margin-right:10px" *ngIf="isPaLoggedin||isAdminLoggedin" [routerLink]="['./deviceedit',device.id]"><i class="far fa-edit fa-lg"></i></a>
 
               <a  *ngIf="isAdminLoggedin" (click)=onDelete(device.id)><i class="far fa-trash-alt fa-lg"></i></a>
 

@@ -80,6 +80,7 @@ export class UserEditComponent implements OnInit {
     if(this.countPa ==0){
       //if pa does exist, add this user to pa list
       this.pas.push(new User(this.idPanew,this.user.email,this.user.name,""));
+
       //update all users List, update current user's role to PA
       // this.user.type = "pa";
 
@@ -107,6 +108,8 @@ export class UserEditComponent implements OnInit {
     }else{
       alert("This PA user already exists.");
     }
+
+    this.ngOnInit();
   }
   assginToAdmin(){
     for(let key in this.admins){

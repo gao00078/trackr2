@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
   private id:number;
   private name:string="";
   private count:number = 0;
-  private type:string ="student";
+  private type:string ="Student";
 
   constructor(private authService:AuthService,
               private dataService:DataService,
