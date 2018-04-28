@@ -5,7 +5,7 @@
 <div >
 
   <div class="row">
-    <div class="col-xs-12" style="margin-top:12px">
+    <!-- <div class="col-xs-12" style="margin-top:12px">
       <form (ngSubmit)="onAddPa(f)" #f="ngForm" class="form-inline pull-right">
         <div class="form-group">
           <label for="name">Name</label>
@@ -17,7 +17,7 @@
         </div>
         <button type="submit" class="btn btn-success" [disabled]="!f.valid">Add PA</button>
       </form>
-    </div>
+    </div> -->
 
 
 
@@ -28,7 +28,7 @@
           <tr>
             <th>Name</th>
             <th>Email</th>
-            <!-- <th>Type</th> -->
+            <th>Type</th>
             <!-- <th>ID</th> -->
             <th>Delete</th>
           </tr>
@@ -37,7 +37,7 @@
           <tr *ngFor="let pa of pas">
             <td> {{pa.name}} </td>
             <td>{{pa.email}}</td>
-            <!-- <td>XXX</td> -->
+            <td>PA</td>
             <!-- <td>{{pa.id}}</td> -->
             <td>
               <!-- <button  class="btn btn-danger pull-right" (click)=onDelete(pa.id)>Delete</button> -->

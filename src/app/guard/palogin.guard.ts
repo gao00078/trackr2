@@ -77,10 +77,13 @@ export class PaloginGuard implements CanActivate{
 
 
     this.paList = this.dataService.getPaList();
-    // console.log(this.paList);
+    console.log(this.paList);
 
     this.adminList = this.dataService.getAdminList();
-    // console.log(this.adminList);
+    console.log(this.adminList);
+    if(this.adminList == null){
+      this.adminList = [];
+    }
 
     this.paAdminTotalList = this.adminList.push.apply(this.adminList,this.paList);
     // this.paAdminTotalList = this.adminList.push(...this.paList);

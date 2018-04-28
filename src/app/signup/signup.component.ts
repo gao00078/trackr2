@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
   private id:number;
   private name:string="";
   private count:number = 0;
+  private type:string ="student";
 
   constructor(private authService:AuthService,
               private dataService:DataService,
@@ -47,7 +48,7 @@ export class SignupComponent implements OnInit {
       }
     }
     if(this.count ==0){
-      this.users.push(new User(this.id, form.value.email, form.value.name));
+      this.users.push(new User(this.id, form.value.email, form.value.name, this.type));
 
       this.dataService.storeUsers(this.users)
         .subscribe(

@@ -49,6 +49,7 @@ export class DeviceDetailComponent implements OnInit {
   ngOnInit() {
     this.deviceId = this.routeInfo.snapshot.params["id"];
     this.device = this.dataService.getDevice(this.deviceId);
+    // console.log(this.device.logHistory);
     this.dataService.getDevicesFromFirebase()
       .subscribe(
         (data) => this.devices =data

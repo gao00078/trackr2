@@ -50,6 +50,13 @@ To be deleted!  device-edit works!
     </div>
 
     <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Device Identifier</label>
+      <div class="col-sm-9">
+        <input #imei="ngModel" [(ngModel)]="device.Device_Identifier" name="deviceIdentifier" type="text" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group row">
       <label class="col-sm-3 col-form-label">Device Resolution</label>
       <div class="col-sm-9">
         <input #resolution="ngModel" [(ngModel)]="device.Device_Resolution" name="resolution" type="text" class="form-control">

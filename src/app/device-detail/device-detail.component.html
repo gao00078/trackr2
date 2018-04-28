@@ -15,6 +15,7 @@
         <h4>Specifications </h4>
         <p>Device type:{{device.Device_Type}}</p>
         <p>IMEI#: {{device.Device_IMEI}}</p>
+        <p>Device_Identifier: {{device.Device_Identifier}}</p>
         <p>OS: {{device.Device_OS}}</p>
         <p>OS version: {{device.Device_OSv}}</p>
         <p>Screen vize: {{device.Device_ScreenSz}}</p>
@@ -92,6 +93,12 @@
           <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
         </agm-map>
       </div>
+
+
+
+      <!-- <div>
+        {{device.logHistory[0]}}
+      </div> -->
 
     </div>
 

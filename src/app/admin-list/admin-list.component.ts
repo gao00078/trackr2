@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AdminListComponent implements OnInit {
    admins:User[]=[];
+  private typeDefault:string = "admin";
   private idnew:number;
   private count:number = 0;
 
@@ -42,7 +43,7 @@ export class AdminListComponent implements OnInit {
       }
     }
     if(this.count ==0){
-      this.admins.push(new User(this.idnew++,form.value.email, form.value.name));
+      this.admins.push(new User(this.idnew++,form.value.email, form.value.name,this.typeDefault));
       this.dataService.storeAdminListToFirebase(this.admins)
         .subscribe(
           (response) => {

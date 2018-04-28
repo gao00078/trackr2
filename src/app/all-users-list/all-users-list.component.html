@@ -2,7 +2,11 @@
   all-users-list works!
 </p> -->
 <div>
-  <button [routerLink]="['./useradd']" class="btn btn-success" >Add user</button>
+  <!-- <div >
+    <a class="addCircle" style="padding:0;margin:0" [routerLink]="['./useradd']"><i style="padding-left:5px" class="fas fa-plus-circle fa-3x"></i></a>
+  </div> -->
+
+  <!-- <button [routerLink]="['./useradd']" class="btn btn-success" >Add user</button> -->
 
   <!-- <a style="padding:0;margin:0" [routerLink]="['./useradd']"><i style="padding-left:5px" class="fas fa-plus-circle fa-3x"></i></a> -->
 
@@ -17,8 +21,8 @@
           <tr>
             <th>Name</th>
             <th>Email</th>
-            <!-- <th>Type</th> -->
-            <!-- <th>ID</th> -->
+            <th>Type</th>
+            <th>Assign</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -26,8 +30,17 @@
           <tr *ngFor="let user of allUsers">
             <td> {{user.name}} </td>
             <td>{{user.email}}</td>
-            <!-- <td>XXX</td> -->
-            <!-- <td>{{user.id}}</td> -->
+            <td>{{user.type}}</td>
+
+            <td>
+              <a [routerLink]="['./useredit',user.id]"><i class="fas fa-user-secret fa-lg"></i></a>
+
+              <!-- <button  class="btn btn-warning" (click)=assignToPa(user.id)>P</button>
+
+              <button  class="btn btn-danger" (click)=Assign(user.id)>A</button> -->
+
+
+            </td>
             <td>
               <!-- <button  class="btn btn-danger pull-right" (click)=onDelete(user.id)>Delete</button> -->
 

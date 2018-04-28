@@ -42,6 +42,7 @@ export class DeviceEditComponent implements OnInit {
         this.devices[device].Device_OSv = value.osVersion;
         this.devices[device].Device_Color = value.deviceColor;
         this.devices[device].Device_IMEI = value.imei;
+        this.devices[device].Device_Identifier= value.deviceIdentifier;
         this.devices[device].Device_Resolution = value.resolution;
         this.devices[device].Device_ScreenSz = value.screenSize;
         this.devices[device].Manufacturer = value.manufacturer;
@@ -51,6 +52,9 @@ export class DeviceEditComponent implements OnInit {
 
       }
     }
+
+    //if "null" values are to be removed:
+    // this.devices = this.devices.filter(item=>item);
 
     this.dataService.storeDevices(this.devices)
       .subscribe(

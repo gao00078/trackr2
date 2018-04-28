@@ -1,7 +1,7 @@
-a {
+.addCircle {
     background-color: inherit;
 }
-a {background-color:transparent !important;}
+.addCircle {background-color:transparent !important;}
 /* i{
   color: #5cb85c;
 }
@@ -9,5 +9,9 @@ i:hover{
   color: green;
 } */
 li{
-  opacity: 1;
+  /* opacity: 1; */
+}
+.fontBlack a{
+  /* color: #000; */
+  /* font-size: 14px; */
 }

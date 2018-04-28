@@ -28,7 +28,7 @@ import { DeviceEditComponent } from './device-edit/device-edit.component';
 import { PaloginGuard } from './guard/palogin.guard';
 import { RegularloginGuard } from './guard/regularlogin.guard';
 import { UserListComponent } from './user-list/user-list.component';
-import { UserAddComponent } from './user-add/user-add.component';
+// import { UserAddComponent } from './user-add/user-add.component';
 import { AdminloginGuard } from './guard/adminlogin.guard';
 import { AllUsersListComponent } from './all-users-list/all-users-list.component';
 import { PaListComponent } from './pa-list/pa-list.component';
@@ -36,6 +36,7 @@ import { AdminListComponent } from './admin-list/admin-list.component';
 
 import {AgmCoreModule} from "@agm/core";
 import { FilterPipe } from './pipe/filter.pipe';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 const routeConfig: Routes=[
   {path:'', redirectTo:'/login', pathMatch:'full'},
@@ -52,7 +53,8 @@ const routeConfig: Routes=[
           {path:'', component:AllUsersListComponent},
           {path:'pas', component:PaListComponent},
           {path:'admins', component:AdminListComponent},
-          {path:'useradd', component:SignupComponent}
+          {path:'useradd', component:SignupComponent},
+          {path:'useredit/:id', component:UserEditComponent}
         ]
       }
       // {path:'signup',component: SignupComponent,canActivate:[AdminloginGuard]}
@@ -85,11 +87,12 @@ const routeConfig: Routes=[
     DeviceAddComponent,
     DeviceEditComponent,
     UserListComponent, //Users Management
-    UserAddComponent,
+    // UserAddComponent,
     AllUsersListComponent,
     PaListComponent,
     AdminListComponent,
-    FilterPipe
+    FilterPipe,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +101,7 @@ const routeConfig: Routes=[
     HttpClientModule,
     RouterModule.forRoot(routeConfig),
     AgmCoreModule.forRoot({
-      apiKey:"AIzaSyBpX7-Yrhm04YyO4p6xqRpFrpKkiEXGvS0"
+      apiKey:"AIzaSyBpX7-Yrhm04YyO4p6xqRpFrpKkiEXGvS0" // google map api key
     })
     // RouterModule.forChild(routeConfig)
 

@@ -29,9 +29,7 @@
     <!-- <li class="pull-right"><button   *ngIf="isAdminLoggedin" [routerLink]="['./signup']" class="btn btn-primary">Add User</button></li> -->
 
 
-  <div *ngIf="isPaLoggedin||isAdminLoggedin">
-    <a style="padding:0;margin:0" [routerLink]="['./deviceadd']"><i style="padding-left:5px" class="fas fa-plus-circle fa-3x"></i></a>
-  </div>
+
   <!-- <nav class="nav pull-right">
     <a class="nav-link active" href="#">Active</a>
     <a class="nav-link" href="#">Link</a>
@@ -39,10 +37,17 @@
     <a class="nav-link disabled" href="#">Disabled</a>
   </nav> -->
 
-  <ul class="nav nav-tabs" style="margin-top:4px;background:rgba(0,0,0,0.1);">
-    <!-- <li class="nav-item">Filter:</li> -->
+  <!-- <ul class="nav nav-pills " style="margin-top:4px;background:rgba(0,0,0,0.1);"> -->
+
+
+    <ul class="nav nav-tabs" style="margin-top:4px;background:rgba(0,0,0,0.1);">
+
+      <li class="nav-item " *ngIf="isPaLoggedin||isAdminLoggedin">
+        <a class="addCircle" style="padding:0;margin:0" [routerLink]="['./deviceadd']"><i style="padding-left:5px;padding-top:7px" class="fas fa-plus-circle fa-2x"></i></a>
+
+      </li>
     <li class="nav-item">
-      <a class="nav-link " (click)="title=null">All</a>
+      <a class="nav-link  " (click)="title=null">All</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" (click)="title='iOS'">iOS</a>
@@ -57,7 +62,17 @@
       <a class="nav-link" (click)="title='Signed Out'">Signed Out</a>
     </li>
 
+
   </ul>
+<!--
+  <div >
+    <a class="addCircle" style="padding:0;margin:0" [routerLink]="['./deviceadd']"><i style="padding-left:5px" class="fas fa-plus-circle fa-3x"></i></a>
+  </div> -->
+
+
+
+
+
 
   <div class="row">
     <div class="col-xs-12">
@@ -70,7 +85,7 @@
             <th>OS</th>
             <th>Version</th>
             <th>Status</th>
-            <th *ngIf="isAdminLoggedin">Delete</th>
+            <th *ngIf="isPaLoggedin||isAdminLoggedin">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -92,13 +107,15 @@
               <span *ngIf="device.Device_Status=='Available'"><i class="fas fa-check-circle fa-lg"></i></span>
 
             </td>
-            <td *ngIf="isAdminLoggedin">
+            <td>
               <!-- <h4><a [routerLink]="['./device',device.id]">{{device.id}}</a></h4> -->
               <!-- <button class="btn btn-info"[routerLink]="['./devicedetail',device.id]">Details</button> -->
               <!-- <button  *ngIf="isPaLoggedin||isAdminLoggedin" class="btn btn-warning " [routerLink]="['./deviceedit',device.id]">Edit</button> -->
               <!-- <button *ngIf="isAdminLoggedin" class="btn btn-danger pull-right" (click)=onDelete(device.id)>Delete</button> -->
 
-              <a (click)=onDelete(device.id)><i class="far fa-trash-alt fa-lg"></i></a>
+              <a *ngIf="isPaLoggedin||isAdminLoggedin" [routerLink]="['./deviceedit',device.id]"><i class="far fa-edit fa-lg"></i></a>
+
+              <a  *ngIf="isAdminLoggedin" (click)=onDelete(device.id)><i class="far fa-trash-alt fa-lg"></i></a>
 
 
               <!-- <button class="btn btn-primary"

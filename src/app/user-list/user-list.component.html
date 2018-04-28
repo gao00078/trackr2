@@ -16,9 +16,48 @@
     <li class="nav-item " [class.active]= "isPas" (click)="pasClicked()">
       <a data-toggle="tab" class="nav-link" [routerLink]="['./pas']" >PAs</a>
     </li>
-
-
   </ul> -->
+
+<!--
+   <ul class="nav nav-tabs" style="margin-top:4px;background:rgba(0,0,0,0.1);">
+      <li class="nav-item">
+        <a class="nav-link " (click)="title=null">All</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="title='iOS'">iOS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="title='Android'">Android</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="title='Available'">Available</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="title='Signed Out'">Signed Out</a>
+      </li>
+
+    </ul> -->
+
+
+    <ul *ngIf="isAddUser" class="nav nav-tabs" style="margin-top:4px;background:rgba(0,0,0,0.1);">
+
+    <li class="nav-item">
+      <a  style="padding:0;" (click)="isAddUser = true" [routerLink]="['./useradd']"><i style="padding-left:5px;padding-top:7px" class="fas fa-user-plus fa-2x"></i></a>
+
+    </li>
+
+    <li class="nav-item">
+      <a  class="nav-link" [routerLink]="['./']" (click)="title=null">All</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['./pas']" (click)="title='iOS'">PAs</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['./admins']" (click)="title='Android'">Admins</a>
+    </li>
+
+  </ul>
+
 
     <!-- <li class="nav-item ">
       <a class="nav-link" [routerLink]="['./useradd']" >Add user</a>

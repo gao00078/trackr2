@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Device, DataService, User } from '../providers/data.service';
-import {AuthService} from '../providers/auth.service';
-import {AdminloginGuard} from '../guard/adminlogin.guard';
-import {PaloginGuard} from '../guard/palogin.guard';
+import { AuthService } from '../providers/auth.service';
+import { AdminloginGuard } from '../guard/adminlogin.guard';
+import { PaloginGuard } from '../guard/palogin.guard';
 // import {Router} from "@angular/router";
 import { Location } from '@angular/common';
+
+declare var $: any;
 @Component({
   selector: 'app-device-list',
   templateUrl: './device-list.component.html',
@@ -12,21 +14,21 @@ import { Location } from '@angular/common';
 })
 export class DeviceListComponent implements OnInit {
 
-  private show:boolean =true;
+  private show: boolean = true;
 
-   isAdminLoggedin:boolean;
+  isAdminLoggedin: boolean;
   // private adminList:User[]=[];
-   isPaLoggedin:boolean;
+  isPaLoggedin: boolean;
 
-   devices: Device[]=[];
+  devices: Device[] = [];
 
   // private pas:User[]=[];
-   title:string = null ;
+  title: string = null;
 
   constructor(private dataService: DataService,
-              // private authService: AuthService,
-              private adminGuard: AdminloginGuard,
-              private paGuard: PaloginGuard
+    // private authService: AuthService,
+    private adminGuard: AdminloginGuard,
+    private paGuard: PaloginGuard
 
   ) { }
 
@@ -35,25 +37,28 @@ export class DeviceListComponent implements OnInit {
     //initializaiton finish dataService http get requests
     this.dataService.getDevicesFromFirebase()
       .subscribe(
-      (data) => {this.devices = data;
-        // console.log(this.devices);
+      (data) => {
+      this.devices = data;
+      console.dir(this.devices);
+      //if "null" values are to be removed:
+      this.devices = data.filter(item=>item);
       }
       )
     this.dataService.getPaListFromFirebase()
       .subscribe(
-        (data) =>{
-          this.isPaLoggedin = this.paGuard.canActivate();
+      (data) => {
+        this.isPaLoggedin = this.paGuard.canActivate();
 
-        }
+      }
       )
     this.dataService.getAdminListFromFirebase()
       .subscribe(
-        (data) =>{
-          this.isAdminLoggedin = this.adminGuard.canActivate();
-          // console.log("isAdminLoggedin here");
-          // console.log(this.isAdminLoggedin);
+      (data) => {
+        this.isAdminLoggedin = this.adminGuard.canActivate();
+        // console.log("isAdminLoggedin here");
+        // console.log(this.isAdminLoggedin);
 
-        }
+      }
       )
 
     // console.log("isPaLoggedin");
@@ -77,6 +82,16 @@ export class DeviceListComponent implements OnInit {
 
   }
 
+  ngAfterViewInit() {
+    $(document).ready(function() {
+      $(".nav-item").click(function() {
+        $(".nav-item").removeClass("active fontBlack");
+        // $(".tab").addClass("active"); // instead of this do the below
+        $(this).addClass("active fontBlack");
+      });
+    });
+  }
+
 
   onDelete(id: number) {
     // console.log(id);
@@ -85,6 +100,8 @@ export class DeviceListComponent implements OnInit {
     this.devices = this.devices.filter(device => device.id != id);
     // this.devices = newDevices;
     // console.log(newDevices);
+    //if "null" values are to be removed:
+    this.devices = this.devices.filter(item=>item);
     this.dataService.storeDevices(this.devices)
       .subscribe(
       (response) => {

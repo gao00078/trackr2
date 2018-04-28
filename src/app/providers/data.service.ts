@@ -8,6 +8,7 @@ import * as firebase from 'firebase';
 export class DataService {
   // private devices: Device[] = [];
   private devices: any;
+  private allUsers:User[]=[];
 
   private pas: User[] = [];
   private admins: User[] = [];
@@ -62,9 +63,16 @@ export class DataService {
       .map(
       (response: Response) => {
         const data = response.json();
+        this.allUsers = data;
         return data;
       }
       )
+  }
+  getAllUsers(){
+    return this.allUsers;
+  }
+  getUser(id:number){
+    return this.allUsers.find((user)=>user.id == id)
   }
 
   getPaListFromFirebase() {
@@ -115,10 +123,6 @@ export class DataService {
   //   new Device(4,"iPhone 8s-1","iOS","13.0.1",false),
   //   new Device(5,"Huawei P20-1","Android","7.0",true)
   // ];
-
-
-
-
 }
 
 // export class Device {
@@ -137,6 +141,8 @@ export class Device {
     public qrCode: string,
     public Device_Color: string,
     public Device_IMEI: string,
+    public Device_Identifier:string,
+    public logHistory:Loghistory[],
     public Device_Name: string,
     public Device_OS: string,
     public Device_OSv: string,
@@ -147,12 +153,12 @@ export class Device {
     public Device_Type: string,
     public Manufacturer: string,
     public Signout_AdminPhoto: string,
-    public Signout_DatePikr: string,
-    public Signout_Email: string,
+    public Signout_DatePikr: string, //Expiration time
+    public Signout_Email: string,  //user email
     public Signout_Permit: string, //sign out type.
     public Signout_PermitEmail: string,
     public Signout_StuPhoto: string,
-    public Signout_Time: string,
+    public Signout_Time: string,//sign out time
     public lat: number,
     public lng: number
   ) { }
@@ -161,8 +167,20 @@ export class User {
   constructor(
     public id: number,
     public email: string,
-    public name: string
+    public name: string,
+    public type: string
   ) { }
+}
+
+export class Loghistory{
+  constructor(
+    public id:number,
+    public email:string,
+    public expirTime:string,
+    public signOutTime:string,
+    public signOutType:string
+
+  ){}
 }
 
 // export class User{

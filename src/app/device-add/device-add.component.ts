@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Device, DataService } from '../providers/data.service';
+import { Device, DataService,Loghistory } from '../providers/data.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,12 +12,16 @@ export class DeviceAddComponent implements OnInit {
   private devices: Device[] = [];
   private id: number;
   private currentStatus: boolean = false;
+  private logHisArr: Loghistory[]=[];
 
   constructor(private dataService: DataService,
               private router:Router
   ) { }
 
   ngOnInit() {
+
+    // this.logHisArr.push(new Loghistory(1,"test@test.com", "2:00pm", "10pm", "OverNight"))
+
     this.dataService.getDevicesFromFirebase()
       .subscribe(
       (data) => {
@@ -47,6 +51,8 @@ export class DeviceAddComponent implements OnInit {
                                  "", //qrCode
                                  value.color,
                                  value.imei,
+                                 value.deviceIdentifier,
+                                 this.logHisArr,
                                  value.devicename,
                                  value.os,
                                  value.osVersion,
@@ -69,6 +75,8 @@ export class DeviceAddComponent implements OnInit {
 
     // console.log(this.devices);
     // console.log(value.devicename);
+    //if "null" values are to be removed:
+    // this.devices = this.devices.filter(item=>item);
     this.dataService.storeDevices(this.devices)
       .subscribe(
       (response) => {

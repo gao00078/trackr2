@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService, User } from '../providers/data.service';
 
+declare var $: any;
+
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -12,28 +15,39 @@ export class UserListComponent implements OnInit {
   // private idnew:number;
   // private counter:number = 0;
   // // private isAble:boolean = false;
-  private isAllUsers:boolean = true;
-  private isAdmins:boolean = false;
-  private isPas:boolean =false;
+
+  // private isAllUsers:boolean = true;
+  // private isAdmins:boolean = false;
+  // private isPas:boolean =false;
+  private isAddUser:boolean = true;
 
 
   constructor(private dataService: DataService) { }
+  ngAfterViewInit() {
+    $(document).ready(function() {
+      $(".nav-item").click(function() {
+        $(".nav-item").removeClass("active ");
+        // $(".tab").addClass("active"); // instead of this do the below
+        $(this).addClass("active ");
+      });
+    });
+  }
 
-  allClicked(){
-    this.isAllUsers =true;
-    this.isAdmins = false;
-    this.isPas =false;
-  }
-  adminClicked(){
-    this.isPas = false;
-    this.isAllUsers =false;
-    this.isAdmins = true;
-  }
-  pasClicked(){
-    this.isAdmins = false;
-    this.isPas =true;
-    this.isAllUsers =false;
-  }
+  // allClicked(){
+  //   this.isAllUsers =true;
+  //   this.isAdmins = false;
+  //   this.isPas =false;
+  // }
+  // adminClicked(){
+  //   this.isPas = false;
+  //   this.isAllUsers =false;
+  //   this.isAdmins = true;
+  // }
+  // pasClicked(){
+  //   this.isAdmins = false;
+  //   this.isPas =true;
+  //   this.isAllUsers =false;
+  // }
 
 
   ngOnInit() {
