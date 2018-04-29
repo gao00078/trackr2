@@ -13,7 +13,7 @@
       <div>
         <!-- <p>{{deviceId}}</p> -->
         <h4>Specifications </h4>
-        <p>Device type:{{device.Device_Type}}</p>
+        <p>Device type: {{device.Device_Type}}</p>
         <p>IMEI#: {{device.Device_IMEI}}</p>
         <p>Device_Identifier: {{device.Device_Identifier}}</p>
         <p>OS: {{device.Device_OS}}</p>
@@ -26,7 +26,11 @@
       <br>
       <div>
         <h4>Signout Info</h4>
-        <p>Current status: {{device.Device_Status}}</p>
+        <p>
+          Current status: <strong>{{device.Device_Status}}</strong>
+        </p>
+
+        <!-- <p>Current status: {{device.Device_Status}}</p> -->
         <p>Signout time: {{device.Signout_Time}}</p>
         <p>Expiration Time: {{device.Signout_DatePikr}}</p>
         <p>Signout Email: {{device.Signout_Email}}</p>

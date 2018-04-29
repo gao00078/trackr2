@@ -39,7 +39,21 @@ export class DeviceListComponent implements OnInit {
       .subscribe(
       (data) => {
       this.devices = data;
-      // console.dir(this.devices);
+//       console.dir(this.devices);
+//
+//
+// //reset all devices default locations to T127 Algonquin College
+      // for(let key in this.devices){
+      //   this.devices[key].lat = 45.348328;
+      //   this.devices[key].lng = -75.755207;
+      //   this.devices[key].Signout_Time = "";
+      //   this.devices[key].Signout_DatePikr = "";
+      //   this.devices[key].Signout_Email = "";
+      //   this.devices[key].Signout_Permit = "";
+      //
+      // }
+
+
       //if "null" values are to be removed:
       this.devices = data.filter(item=>item);
       }

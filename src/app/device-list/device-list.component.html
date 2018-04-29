@@ -85,7 +85,11 @@
             <th>OS</th>
             <th>Version</th>
             <th>Status</th>
-            <th *ngIf="isPaLoggedin||isAdminLoggedin">Action</th>
+            <th *ngIf="isPaLoggedin||isAdminLoggedin">
+              <span>Edit</span><span *ngIf="isAdminLoggedin">&emsp;Delete</span>
+
+
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -109,8 +113,8 @@
               <!-- <button  *ngIf="isPaLoggedin||isAdminLoggedin" class="btn btn-warning " [routerLink]="['./deviceedit',device.id]">Edit</button> -->
               <!-- <button *ngIf="isAdminLoggedin" class="btn btn-danger pull-right" (click)=onDelete(device.id)>Delete</button> -->
 
-              <a style="margin-right:10px" *ngIf="isPaLoggedin||isAdminLoggedin" [routerLink]="['./deviceedit',device.id]"><i class="far fa-edit fa-lg"></i></a>
-
+              <a  *ngIf="isPaLoggedin||isAdminLoggedin" [routerLink]="['./deviceedit',device.id]"><i class="far fa-edit fa-lg"></i></a>
+&emsp;
               <a  *ngIf="isAdminLoggedin" (click)=onDelete(device.id)><i class="far fa-trash-alt fa-lg"></i></a>
 
 

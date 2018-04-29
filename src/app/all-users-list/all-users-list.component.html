@@ -22,8 +22,8 @@
             <th>Name</th>
             <th>Email</th>
             <th>Type</th>
-            <th>Assign</th>
-            <th>Delete</th>
+            <!-- <th>Assign</th> -->
+            <th>Assign&emsp;Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -32,18 +32,20 @@
             <td>{{user.email}}</td>
             <td>{{user.type}}</td>
 
-            <td>
-              <a [routerLink]="['./useredit',user.id]"><i class="fas fa-user-secret fa-lg"></i></a>
+            <!-- <td> -->
+              <!-- <a [routerLink]="['./useredit',user.id]"><i class="fas fa-user-secret fa-lg"></i></a> -->
 
               <!-- <button  class="btn btn-warning" (click)=assignToPa(user.id)>P</button>
 
               <button  class="btn btn-danger" (click)=Assign(user.id)>A</button> -->
 
 
-            </td>
+            <!-- </td> -->
             <td>
               <!-- <button  class="btn btn-danger pull-right" (click)=onDelete(user.id)>Delete</button> -->
-
+&emsp;
+              <a  [routerLink]="['./useredit',user.id]"><i class="fas fa-user-secret fa-lg"></i></a>
+&emsp;&emsp;
               <a (click)=onDelete(user.id) ><i class="far fa-trash-alt fa-lg"></i></a>
 
 
