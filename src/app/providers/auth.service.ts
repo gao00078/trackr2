@@ -47,7 +47,7 @@ export class AuthService {
         } else if (error.code == "auth/wrong-password") {
 
           this.count++;
-          if (this.count > 2) {
+          if (this.count > 3) {
             // console.log(this.count);
             alert("If you forgot your password, please contact one of admin professors to reset your password")
           } else {
